@@ -8,7 +8,7 @@ public class ClueManager : MonoBehaviour
 
     public List<ClueInteractable> allClueObjects = new List<ClueInteractable>();
     public int currentClueIndex = 0;
-
+    public bool AreAllCluesSolved = false;
     private void Awake()
     {
         Instance = this;
@@ -39,6 +39,7 @@ public class ClueManager : MonoBehaviour
         if (currentClueIndex >= currentLevel.levelClues.Count)
         {
             Debug.Log("🎉 Level completed!");
+            AreAllCluesSolved = true;
             HintManager.Instance.SetEnabled(false);
             GameManager.Instance.OnLevelCompleted();
         }
@@ -86,6 +87,7 @@ public class ClueManager : MonoBehaviour
     {
         currentClueIndex = 0;
         ShowCurrentClue();
+        AreAllCluesSolved = false;
     }
 
     public void ResetAllClues()
