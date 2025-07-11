@@ -15,15 +15,18 @@ public enum InteractionType
 public class InteractableBase : MonoBehaviour
 {
     public bool isInteractable = true;
-    public InteractionType interactions; // 👈 هتختاري منها من Inspector
+    public InteractionType interactions;
 
     private bool hasScaled = false;
     private Vector3 offset;
     private bool isDragging = false;
+    [HideInInspector] public bool isInsideTargetArea = false;
+    [HideInInspector] public DragTargetArea targetArea;
+    public Transform targetSnapPosition; 
 
     private void OnMouseDown()
     {
-        HintManager.Instance.ResetIdleTimer(); // Reset idle timer when interaction starts
+        HintManager.Instance.ResetIdleTimer();
         if (!isInteractable) return;
 
         if (interactions.HasFlag(InteractionType.Tap))
@@ -46,6 +49,10 @@ public class InteractableBase : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+        if (interactions.HasFlag(InteractionType.Drag) && isInsideTargetArea && targetSnapPosition != null)
+        {
+            transform.DOMove(targetSnapPosition.position, 0.4f).SetEase(Ease.OutBack);
+        }
     }
 
     private void OnMouseOver()
