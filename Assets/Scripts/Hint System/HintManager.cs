@@ -52,11 +52,11 @@ public class HintManager : MonoBehaviour
 
     private void TriggerHint()
     {
-        hintTriggered = true;
         Debug.Log("💡 Triggering hint...");
 
         var activeClues = GetValidActiveClues();
-
+        // Set cooldown before next hint can trigger
+        idleTimer = idleThreshold - hintCooldown;
         if (activeClues.Count == 0)
         {
             Debug.Log("No active clues available for hint");
@@ -68,8 +68,7 @@ public class HintManager : MonoBehaviour
             clue.PlayHintAnimation();
         }
 
-        // Set cooldown before next hint can trigger
-        idleTimer = idleThreshold - hintCooldown;
+        
     }
 
     private List<ClueInteractable> GetValidActiveClues()
@@ -85,11 +84,6 @@ public class HintManager : MonoBehaviour
 
         int[] validIDs = currentLevel.levelClues[ClueManager.Instance.currentClueIndex].validObjectIDs;
 
-        // Filter clues that:
-        // 1. Are in the current level
-        // 2. Are valid for current clue step
-        // 3. Are interactable
-        // 4. Haven't been solved yet
         foreach (var clue in ClueManager.Instance.allClueObjects)
         {
             if (validIDs.Contains(clue.clueID) &&
