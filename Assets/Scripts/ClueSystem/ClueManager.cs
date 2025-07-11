@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using ArabicSupport;
 
 public class ClueManager : MonoBehaviour
 {
     public static ClueManager Instance;
-    [SerializeField]TextMeshProUGUI clueTextUI;
-    public ClueData[] allClues;
-    public int currentClueIndex = 0;
 
-    private List<ClueInteractable> allClueObjects = new List<ClueInteractable>();
+    public List<ClueInteractable> allClueObjects = new List<ClueInteractable>();
+    public int currentClueIndex = 0;
 
     private void Awake()
     {
@@ -21,6 +17,7 @@ public class ClueManager : MonoBehaviour
     {
         ShowCurrentClue();
     }
+
     public void RegisterClueObject(ClueInteractable clue)
     {
         if (!allClueObjects.Contains(clue))
@@ -29,54 +26,84 @@ public class ClueManager : MonoBehaviour
         }
     }
 
-    public void ShowCurrentClue()
-    {
-        int[] validIDs = allClues[currentClueIndex].validObjectIDs;
-        clueTextUI.text = ArabicFixer.Fix(allClues[currentClueIndex].clueText);
-        EnableValidObjects(validIDs);
-    }
-
-    public int GetCurrentClueID()
-    {
-        return allClues[currentClueIndex].clueID;
-    }
-
-    public void EnableValidObjects(int[] validIDs)
-    {
-        foreach (var clue in allClueObjects)
-        {
-            if (validIDs.Contains(clue.clueID))
-                clue.SetInteractable(true);
-            else
-                clue.SetInteractable(false);
-        }
-    }
-
     public void OnClueSolved(int solvedID)
     {
         Debug.Log($"✅ Clue {solvedID} solved!");
         currentClueIndex++;
 
-        if (currentClueIndex < allClues.Length)
+        // Get current level's clues
+        var currentLevel = GameManager.Instance.GetCurrentLevel();
+        if (currentLevel == null) return;
+
+        // Check if solved all clues for current level
+        if (currentClueIndex >= currentLevel.levelClues.Count)
         {
-            ShowCurrentClue();
+            Debug.Log("🎉 Level completed!");
+            HintManager.Instance.SetEnabled(false);
+            GameManager.Instance.OnLevelCompleted();
         }
         else
         {
-            Debug.Log("🎉 All clues solved!");
+            ShowCurrentClue();
         }
     }
 
-    public List<ClueInteractable> GetCurrentActiveClueObjects()
+    public void ShowCurrentClue()
     {
-        int currentID = GetCurrentClueID();
-        return allClueObjects
-            .Where(c => c.clueID == currentID && c.isInteractable)
-            .ToList();
-    }
-    public bool AreAllCluesSolved()
-    {
-        return currentClueIndex >= allClues.Length;
+        var currentLevel = GameManager.Instance.GetCurrentLevel();
+        if (currentLevel == null || currentClueIndex >= currentLevel.levelClues.Count)
+        {
+            Debug.LogWarning("No valid clue to show");
+            return;
+        }
+
+        // Show current clue text
+        GameManager.Instance.ShowNextVerse(currentLevel.levelClues[currentClueIndex].clueText);
+
+        // Enable valid objects for this clue
+        EnableValidObjects(currentLevel.levelClues[currentClueIndex].validObjectIDs);
     }
 
+    private void EnableValidObjects(int[] validIDs)
+    {
+        foreach (var clue in allClueObjects)
+        {
+            bool shouldBeActive = validIDs.Contains(clue.clueID) &&
+                                IsClueInCurrentLevel(clue.clueID);
+            clue.SetInteractable(shouldBeActive);
+        }
+    }
+
+    private bool IsClueInCurrentLevel(int clueID)
+    {
+        var currentLevel = GameManager.Instance.GetCurrentLevel();
+        if (currentLevel == null) return false;
+
+        return currentLevel.levelClues.Any(c => c.clueID == clueID);
+    }
+
+    public void ResetForNewLevel()
+    {
+        currentClueIndex = 0;
+        ShowCurrentClue();
+    }
+
+    public void ResetAllClues()
+    {
+        currentClueIndex = 0;
+        foreach (var clue in allClueObjects)
+        {
+            clue.ResetClue();
+        }
+        ShowCurrentClue();
+    }
+
+    public int GetCurrentClueID()
+    {
+        var currentLevel = GameManager.Instance.GetCurrentLevel();
+        if (currentLevel == null || currentClueIndex >= currentLevel.levelClues.Count)
+            return -1;
+
+        return currentLevel.levelClues[currentClueIndex].clueID;
+    }
 }
