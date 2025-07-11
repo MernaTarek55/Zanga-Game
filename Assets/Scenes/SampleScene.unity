@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactions: 3
   clueID: 1
 --- !u!212 &262506550
 SpriteRenderer:
@@ -392,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactions: 4
   clueID: 0
 --- !u!212 &306956328
 SpriteRenderer:
@@ -872,6 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  interactions: 0
 --- !u!61 &812835931
 BoxCollider2D:
   m_ObjectHideFlags: 0

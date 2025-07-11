@@ -23,7 +23,6 @@ public class InteractableBase : MonoBehaviour
 
     private void OnMouseDown()
     {
-        HintManager.Instance.ResetIdleTimer();
         if (!isInteractable) return;
 
         if (interactions.HasFlag(InteractionType.Tap))
