@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using DG.Tweening;
 using ArabicSupport;
 
 public class ClueManager : MonoBehaviour
 {
     public static ClueManager Instance;
-    public TextMeshProUGUI clueTextUI;
-
-    public ClueData[] allClues; // Your clue scriptable objects
+    [SerializeField]TextMeshProUGUI clueTextUI;
+    public ClueData[] allClues;
     public int currentClueIndex = 0;
+
+    private List<ClueInteractable> allClueObjects = new List<ClueInteractable>();
 
     private void Awake()
     {
@@ -20,9 +21,35 @@ public class ClueManager : MonoBehaviour
     {
         ShowCurrentClue();
     }
+    public void RegisterClueObject(ClueInteractable clue)
+    {
+        if (!allClueObjects.Contains(clue))
+        {
+            allClueObjects.Add(clue);
+        }
+    }
+
+    public void ShowCurrentClue()
+    {
+        int[] validIDs = allClues[currentClueIndex].validObjectIDs;
+        clueTextUI.text = ArabicFixer.Fix(allClues[currentClueIndex].clueText);
+        EnableValidObjects(validIDs);
+    }
+
     public int GetCurrentClueID()
     {
         return allClues[currentClueIndex].clueID;
+    }
+
+    public void EnableValidObjects(int[] validIDs)
+    {
+        foreach (var clue in allClueObjects)
+        {
+            if (validIDs.Contains(clue.clueID))
+                clue.SetInteractable(true);
+            else
+                clue.SetInteractable(false);
+        }
     }
 
     public void OnClueSolved(int solvedID)
@@ -37,34 +64,14 @@ public class ClueManager : MonoBehaviour
         else
         {
             Debug.Log("🎉 All clues solved!");
-            // Trigger level complete here
         }
     }
 
-    // ✅ THIS FIXES YOUR ERROR
-    public void ShowCurrentClue()
+    public List<ClueInteractable> GetCurrentActiveClueObjects()
     {
-        ClueData currentClue = allClues[currentClueIndex];
-
-        clueTextUI.DOFade(0, 0f);
-        clueTextUI.text = ArabicFixer.Fix(currentClue.clueText);
-        clueTextUI.DOFade(1, 0.5f);
-
-        EnableValidObjects(currentClue.validObjectIDs);
-    }
-
-
-    // This finds all ClueInteractables and enables only the correct ones
-    public void EnableValidObjects(int[] validIDs)
-    {
-        ClueInteractable[] all = FindObjectsOfType<ClueInteractable>();
-
-        foreach (var obj in all)
-        {
-            if (validIDs.Contains(obj.clueID))
-                obj.SetInteractable(true);
-            else
-                obj.SetInteractable(false);
-        }
+        int currentID = GetCurrentClueID();
+        return allClueObjects
+            .Where(c => c.clueID == currentID && c.isInteractable)
+            .ToList();
     }
 }

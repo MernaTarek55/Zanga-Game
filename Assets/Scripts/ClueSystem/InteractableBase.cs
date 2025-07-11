@@ -23,6 +23,7 @@ public class InteractableBase : MonoBehaviour
 
     private void OnMouseDown()
     {
+        HintManager.Instance.ResetIdleTimer(); // Reset idle timer when interaction starts
         if (!isInteractable) return;
 
         if (interactions.HasFlag(InteractionType.Tap))
@@ -49,6 +50,7 @@ public class InteractableBase : MonoBehaviour
 
     private void OnMouseOver()
     {
+        HintManager.Instance.ResetIdleTimer(); // Reset idle timer when mouse is over interactable
         if (!isInteractable || !interactions.HasFlag(InteractionType.Hold)) return;
 
         if (Input.GetMouseButton(0))

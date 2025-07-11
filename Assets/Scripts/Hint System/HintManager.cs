@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class HintManager : MonoBehaviour
 {
     public static HintManager Instance;
 
-    public float idleThreshold = 10f; // seconds
-    private float idleTimer = 0f;
-
-    public UnityEvent onHintTriggered;
-
-    private bool hintShown = false;
+    public float idleThreshold = 10f;
+    [SerializeField] float idleTimer = 0f;
+    [SerializeField] bool hintTriggered = false;
 
     private void Awake()
     {
@@ -24,23 +21,30 @@ public class HintManager : MonoBehaviour
     {
         idleTimer += Time.deltaTime;
 
-        if (idleTimer >= idleThreshold && !hintShown)
+        if (idleTimer >= idleThreshold)
         {
-            ShowHint();
+            TriggerHint();
         }
     }
 
     public void ResetIdleTimer()
     {
         idleTimer = 0f;
-        hintShown = false;
+        hintTriggered = false;
     }
 
-    private void ShowHint()
+    private void TriggerHint()
     {
-        hintShown = true;
-        Debug.Log("💡 Hint triggered!");
-        onHintTriggered?.Invoke(); // You can hook this to UI or voice hint, etc.
+        hintTriggered = true;
+        Debug.Log("💡 Triggering hint...");
+
+        var activeClues = ClueManager.Instance.GetCurrentActiveClueObjects();
+
+        foreach (var clue in activeClues)
+        {
+            clue.PlayHintAnimation();
+        }
+        idleTimer = idleThreshold - 2;
     }
 
 }
