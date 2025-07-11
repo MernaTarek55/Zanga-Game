@@ -74,4 +74,9 @@ public class ClueManager : MonoBehaviour
             .Where(c => c.clueID == currentID && c.isInteractable)
             .ToList();
     }
+    public bool AreAllCluesSolved()
+    {
+        return currentClueIndex >= allClues.Length;
+    }
+
 }

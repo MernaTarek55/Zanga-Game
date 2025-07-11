@@ -16,9 +16,14 @@ public class HintManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
+    
     private void Update()
     {
+        if (ClueManager.Instance.AreAllCluesSolved())
+        {
+            enabled = false;
+            return;
+        }
         idleTimer += Time.deltaTime;
 
         if (idleTimer >= idleThreshold)
