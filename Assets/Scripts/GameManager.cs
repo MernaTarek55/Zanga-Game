@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        AdjustCamera();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
         {
             if (ClueManager.Instance.AreAllCluesSolved)
             {
-                
+
                 StopTimer();
                 //Win State
                 return;
@@ -170,7 +171,7 @@ public class GameManager : MonoBehaviour
         if (ClueManager.Instance.AreAllCluesSolved)
         {
             // If clues are solved but timer finished, just stop timer
-            
+
             return;
         }
 
@@ -267,6 +268,12 @@ public class GameManager : MonoBehaviour
     private void DisableHintsForFinalLevel()
     {
         HintManager.Instance.SetEnabled(false);
+    }
+
+    void AdjustCamera()
+    {
+        int pixelsPerUnit = 100; // Match your sprite PPU
+        Camera.main.orthographicSize = Screen.height / (2f * pixelsPerUnit);
     }
 }
 
