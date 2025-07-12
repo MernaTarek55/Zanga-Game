@@ -7,6 +7,7 @@ TagManager:
   - Hole
   - hole
   - hourHand
+  - Rock
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Hole
   - Stars
   - Hourhand
-  - 
-  - 
+  - Rock
+  - Key
   - 
   - 
   - 

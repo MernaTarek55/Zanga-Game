@@ -7,7 +7,7 @@ public class ClueInteractable : InteractableBase
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     public bool IsBlocked = false;
-
+    [SerializeField] private GameObject rock;
     void Start()
     {
         originalPosition = transform.position;
@@ -98,7 +98,14 @@ public class ClueInteractable : InteractableBase
         if (GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
             .levelClues[ClueManager.Instance.currentClueIndex].clueMaxSteps == GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
             .levelClues[ClueManager.Instance.currentClueIndex].clueSteps)
-            ClueManager.Instance.OnClueSolved(clueID);
+        {
+            if (clueID == 11)
+            {
+                gameObject.SetActive(false);
+                rock.SetActive(true);
+                ClueManager.Instance.OnClueSolved(clueID);
+            }
+        }
 
         // Visual feedback
         transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);

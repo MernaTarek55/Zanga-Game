@@ -17,5 +17,5 @@ MonoBehaviour:
     \u0647\u0631\u0648\uFEE7\uFE91 \u0639\u0631\u0632\uFE97 \u0636\u0631\uFEF7\u0627
     \u0621\u0627\u0631\uFEE3\uFEB3\uFEDF\u0627 . "
   validObjectIDs: 16000000
-  clueSteps: 3
-  clueMaxSteps: 0
+  clueSteps: 0
+  clueMaxSteps: 1

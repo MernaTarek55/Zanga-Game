@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d19801924e8d145854b1d642ad7525, type: 3}
-  m_Name: Clue2
+  m_Name: Clue1-1
   m_EditorClassIdentifier: 
-  clueID: 1
-  clueText: "\u062F\u0648\u0631 \u0639\u0646\u062F \u0627\u0644\u062F\u0627\u0626\u0631\u0647"
-  validObjectIDs: 01000000
+  clueID: 11
+  clueText: "\u062F\u0648\u0631 \u0639\u0646\u062F \u0627\u0644\u0645\u0631\u0628\u0639"
+  validObjectIDs: 0b000000
+  clueSteps: 1
+  clueMaxSteps: 1

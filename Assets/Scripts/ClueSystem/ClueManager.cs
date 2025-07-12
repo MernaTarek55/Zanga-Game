@@ -91,6 +91,7 @@ public class ClueManager : MonoBehaviour
             bool shouldBeActive = validIDs.Contains(clue.clueID) &&
                                 IsClueInCurrentLevel(clue.clueID);
             clue.SetInteractable(shouldBeActive);
+            clue.hasBeenSolved = false; // Reset solved state for new clue
         }
     }
 

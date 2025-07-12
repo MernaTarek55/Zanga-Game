@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI poemTextUI;
     private Vector3 originalCameraPosition;
 
+    [Header("First Level Settings")]
+    [SerializeField] GameObject firstCage;
     [Header("Last Level Settings")]
     public float lastLevelDuration = 60f;
     public float zoomInDuration = 2f;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     private float lastLevelTimer;
     private bool isTimerActive;
     [SerializeField] GameObject Cage;
+    [SerializeField] LastLevelHandle lastLevelHandle;
     private void Awake()
     {
         AdjustCamera();
@@ -82,7 +85,11 @@ public class GameManager : MonoBehaviour
             StartTimer();
             DisableHintsForFinalLevel();
         }
-        if (currentLevelIndex < levelPositions.Count)
+        if (currentLevelIndex == 0)
+        {
+            firstCage.transform.DOMove(new Vector3(firstCage.transform.localPosition.x, firstCage.transform.localPosition.y -7f, 0), 1f);
+        }
+            if (currentLevelIndex < levelPositions.Count)
         {
             environmentParent.position = levelPositions[currentLevelIndex];
         }
@@ -128,6 +135,7 @@ public class GameManager : MonoBehaviour
 
         if (IsLastLevel())
         {
+            lastLevelHandle.enabled = true;
             StartTimer();
             DisableHintsForFinalLevel();
         }
@@ -235,7 +243,7 @@ public class GameManager : MonoBehaviour
     public void ShowNextVerse(string verseText)
     {
         if (string.IsNullOrEmpty(verseText)) return;
-
+        levels[currentLevelIndex].levelClues[ClueManager.Instance.currentClueIndex].clueSteps = 0;
         StopCoroutine("DisplayVerseCoroutine");
         StartCoroutine(DisplayVerseCoroutine(verseText));
     }

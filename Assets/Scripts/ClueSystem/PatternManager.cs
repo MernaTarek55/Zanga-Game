@@ -5,8 +5,8 @@ using UnityEngine.Rendering.Universal;
 public class PatternManager : MonoBehaviour
 {
     public static PatternManager Instance;
-    int patternIndex = 0;
-    ClueData clue;
+    public int patternIndex = 0;
+    [SerializeField]ClueData clue;
     [SerializeField] int[] patternSteps;
     [SerializeField] GameObject[] PetalsLight;
     [SerializeField] GameObject moon;
@@ -17,7 +17,6 @@ public class PatternManager : MonoBehaviour
 
     private void Start()
     {
-        clue = GameManager.Instance.levels[GameManager.Instance.currentLevelIndex].levelClues[ClueManager.Instance.currentClueIndex];
         clue.clueSteps = 0; // Initialize clue steps
     }
 
