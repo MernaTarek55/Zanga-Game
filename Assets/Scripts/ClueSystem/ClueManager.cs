@@ -49,7 +49,7 @@ public class ClueManager : MonoBehaviour
             Debug.Log("🎉 Level completed!");
             AreAllCluesSolved = true;
             HintManager.Instance.SetEnabled(false);
-            //GameManager.Instance.OnLevelCompleted();
+            GameManager.Instance.OnLevelCompleted();
         }
         else
         {
