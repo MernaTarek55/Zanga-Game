@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Whole Palestine Character_0: -1637355375093879135
+      Whole Palestine Character_1: 93835494784852350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
