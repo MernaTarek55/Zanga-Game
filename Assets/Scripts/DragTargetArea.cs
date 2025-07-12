@@ -22,17 +22,7 @@ public class DragTargetArea : MonoBehaviour
     {
         return ((1 << obj.layer) & layer.value) != 0;
     }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        var interactable = other.GetComponent<InteractableBase>();
-        if (interactable != null && IsInTargetLayer(interactable.gameObject))
-        {
-            interactable.isInsideTargetArea = false;
-
-            // Unregister the event when object leaves
-            interactable.OnSnapped -= HandleObjectSnapped;
-        }
-    }
+    
 
     private void HandleObjectSnapped(InteractableBase interactable)
     {

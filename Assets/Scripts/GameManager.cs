@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using DG.Tweening;
 using ArabicSupport;
+using UnityEngine.LowLevelPhysics;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,12 +29,11 @@ public class GameManager : MonoBehaviour
     [Header("Last Level Settings")]
     public float lastLevelDuration = 60f;
     public float zoomInDuration = 2f;
-    public float zoomedInSize = 3f; // More zoomed-in than default
-    public TextMeshProUGUI timerText;
-
+    public float zoomedInSize = 3f; 
+    public Transform clockBranch; 
     private float lastLevelTimer;
     private bool isTimerActive;
-
+    [SerializeField] GameObject Cage;
     private void Awake()
     {
         AdjustCamera();
@@ -52,21 +52,36 @@ public class GameManager : MonoBehaviour
         InitializeLevel();
     }
 
-    private void Update()
+    
+    void Update()
     {
-        if (!isTimerActive) return;
-
-        lastLevelTimer -= Time.deltaTime;
-        UpdateTimerDisplay();
-
-        if (lastLevelTimer <= 0f)
+        if (isTimerActive)
         {
-            OnTimerFinished();
+            lastLevelTimer -= Time.deltaTime;
+
+            float rotationProgress = 1 - (lastLevelTimer / lastLevelDuration);
+
+            if (clockBranch != null)
+            {
+                clockBranch.rotation = Quaternion.Euler(0, 0, -360 * rotationProgress);
+            }
+
+            if (lastLevelTimer <= 0)
+            {
+                // Timer ended
+                isTimerActive = false;
+                OnTimerFinished();
+            }
         }
     }
 
     public void InitializeLevel()
     {
+        if (IsLastLevel())
+        {
+            StartTimer();
+            DisableHintsForFinalLevel();
+        }
         if (currentLevelIndex < levelPositions.Count)
         {
             environmentParent.position = levelPositions[currentLevelIndex];
@@ -149,20 +164,12 @@ public class GameManager : MonoBehaviour
         lastLevelTimer = lastLevelDuration;
         isTimerActive = true;
 
-        if (timerText != null)
-        {
-            timerText.gameObject.SetActive(true);
-            timerText.color = Color.white;
-        }
     }
 
     public void StopTimer()
     {
         isTimerActive = false;
-        if (timerText != null)
-        {
-            timerText.gameObject.SetActive(false);
-        }
+        
     }
 
     private void OnTimerFinished()
@@ -176,34 +183,24 @@ public class GameManager : MonoBehaviour
         }
 
         // If timer finished and clues not solved, reset level
-        StartCoroutine(OnTimeExpiredReset());
+        OnTimeExpiredReset();
     }
 
-    private IEnumerator OnTimeExpiredReset()
+    private void OnTimeExpiredReset()
     {
-        StartCoroutine(CompleteLastLevel());
-        // Zoom in before resetting
-        yield return ZoomInCamera();
+        Cage.GetComponent<Animator>().enabled = false;
+        Cage.transform.DOMove(new Vector3(Cage.transform.localPosition.x, Cage.transform.localPosition.y -3.5f, 0), 1f);
+        //StartCoroutine(CompleteLastLevel());
+        //// Zoom in before resetting
+        //yield return ZoomInCamera();
 
-        // Wait a moment before resetting
-        yield return new WaitForSeconds(0.5f);
+        //// Wait a moment before resetting
+        //yield return new WaitForSeconds(0.5f);
 
-        ReturnToFirstLevel();
+        //ReturnToFirstLevel();
     }
 
-    private void UpdateTimerDisplay()
-    {
-        if (timerText == null) return;
-
-        int minutes = Mathf.FloorToInt(lastLevelTimer / 60f);
-        int seconds = Mathf.FloorToInt(lastLevelTimer % 60f);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-        if (lastLevelTimer < 10f)
-        {
-            timerText.color = Color.red;
-        }
-    }
+    
 
     private void ReturnToFirstLevel()
     {
