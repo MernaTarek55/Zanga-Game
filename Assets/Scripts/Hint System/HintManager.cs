@@ -65,6 +65,7 @@ public class HintManager : MonoBehaviour
 
         foreach (var clue in activeClues)
         {
+            //clue.CheckIfBlocked();
             clue.PlayHintAnimation();
         }
 

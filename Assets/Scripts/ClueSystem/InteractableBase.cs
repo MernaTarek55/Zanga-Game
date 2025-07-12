@@ -53,6 +53,11 @@ public class InteractableBase : MonoBehaviour
         {
             transform.DOMove(targetSnapPosition.position, 0.4f).SetEase(Ease.OutBack);
         }
+        foreach (var clue in FindObjectsOfType<ClueInteractable>())
+        {
+            if(clue.IsBlocked)
+                clue.CheckIfBlocked();
+        }
     }
 
     private void OnMouseOver()
