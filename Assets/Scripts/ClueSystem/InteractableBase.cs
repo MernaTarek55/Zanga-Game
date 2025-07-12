@@ -11,9 +11,9 @@ public enum InteractionType
     Drag = 1 << 2
 }
 
-[RequireComponent(typeof(Collider2D))]
 public class InteractableBase : MonoBehaviour
 {
+    public int clueID;
     public bool isInteractable = true;
     public InteractionType interactions;
 
@@ -22,8 +22,10 @@ public class InteractableBase : MonoBehaviour
     private bool isDragging = false;
     [HideInInspector] public bool isInsideTargetArea = false;
     [HideInInspector] public DragTargetArea targetArea;
-    public Transform targetSnapPosition; 
-
+    public Transform targetSnapPosition;
+    public System.Action<InteractableBase> OnSnapped;
+    public bool hasBeenSolved = false;
+    [SerializeField] protected GameObject tree;
     private void OnMouseDown()
     {
         HintManager.Instance.ResetIdleTimer();
@@ -51,7 +53,13 @@ public class InteractableBase : MonoBehaviour
         isDragging = false;
         if (interactions.HasFlag(InteractionType.Drag) && isInsideTargetArea && targetSnapPosition != null)
         {
-            transform.DOMove(targetSnapPosition.position, 0.4f).SetEase(Ease.OutBack);
+            transform.DOMove(targetSnapPosition.position, 0.4f)
+                .SetEase(Ease.OutBack)
+                .OnComplete(() => {
+                    // Trigger the snap event
+                    OnSnapped?.Invoke(this);
+                    HandleSnapComplete();
+                });
         }
         foreach (var clue in FindObjectsOfType<ClueInteractable>())
         {
@@ -59,7 +67,38 @@ public class InteractableBase : MonoBehaviour
                 clue.CheckIfBlocked();
         }
     }
+    protected virtual void HandleSnapComplete()
+    {
+        isInteractable = false;
 
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Debug.Log("✅ Object snapped: " + gameObject.name);
+        if (sr != null)
+        {
+            transform.DOScale(Vector3.one, 0.5f)
+    .SetEase(Ease.OutBack);
+
+            sr.DOColor(Color.white, 0.5f)
+                .SetEase(Ease.Linear)
+                .OnComplete(MakeObjectAppear);
+        }
+
+    }
+    void MakeObjectAppear()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        if(tree == null) return;
+        if (tree.GetComponent<InteractableBase>() == null)
+        {
+
+        Vector3 pos = new Vector3(tree.transform.position.x , tree.transform.position.y+10 , tree.transform.position.z);
+        tree.transform.DOMove(pos  , 1.5f).SetEase(Ease.OutCubic);
+        }
+
+    }
     private void OnMouseOver()
     {
         HintManager.Instance.ResetIdleTimer(); // Reset idle timer when mouse is over interactable
@@ -71,7 +110,10 @@ public class InteractableBase : MonoBehaviour
             OnHold();
         }
     }
-
+    public virtual void ResetClue()
+    {
+        SetInteractable(false);
+    }
     private void HandleHoldOnce()
     {
         if (!hasScaled)
@@ -84,9 +126,6 @@ public class InteractableBase : MonoBehaviour
     public virtual void SetInteractable(bool state)
     {
         isInteractable = state;
-        var sr = GetComponent<SpriteRenderer>();
-        if (sr != null)
-            sr.color = state ? Color.white : Color.gray;
     }
 
     public void ResetInteraction()
@@ -107,4 +146,6 @@ public class InteractableBase : MonoBehaviour
         mousePos.z = 10f;
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
+
+    public virtual void PlayHintAnimation() { }
 }

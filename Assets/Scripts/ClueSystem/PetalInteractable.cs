@@ -1,50 +1,25 @@
-﻿
-using DG.Tweening;
+﻿using DG.Tweening;
+using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-public class ClueInteractable : InteractableBase
+public class PetalInteractable : InteractableBase
 {
+    public int supClueID;
+    //public bool hasBeenSolved = false;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     public bool IsBlocked = false;
 
-    void Start()
+    public Action<int> onPetalPressed;
+
+
+    protected virtual void Start()
     {
         originalPosition = transform.position;
         originalRotation = transform.rotation;
         ClueManager.Instance.RegisterClueObject(this);
         CheckIfBlocked();
-    }
-
-    protected override void HandleSnapComplete()
-    {
-        base.HandleSnapComplete(); // Do the base visual feedback
-
-        // Clue-specific handling
-        if (ClueManager.Instance.GetCurrentClueID() == clueID)
-        {
-            GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
-                .levelClues[ClueManager.Instance.currentClueIndex].clueSteps++;
-
-            if (GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
-                .levelClues[ClueManager.Instance.currentClueIndex].clueSteps >=
-                GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
-                .levelClues[ClueManager.Instance.currentClueIndex].clueMaxSteps)
-            {
-                if (tree != null) tree.SetActive(true);
-                else
-                {
-                    transform.DOMove(new Vector3(6f, 1f, 0f), 2f)
-                        .SetEase(Ease.OutBack)
-                        .OnComplete(() =>
-                        {
-                            transform.rotation = originalRotation;
-                            SetInteractable(false);
-                        });
-                }
-                    ClueManager.Instance.OnClueSolved(clueID);
-            }
-        }
     }
     public void CheckIfBlocked()
     {
@@ -74,34 +49,23 @@ public class ClueInteractable : InteractableBase
         if (col != null)
             col.enabled = !IsBlocked;
 
-        SetInteractable(!IsBlocked );
+        SetInteractable(!IsBlocked);
     }
 
 
 
-    protected override void OnHold()
+    public override void OnTap()
     {
-        CheckIfBlocked();
-        if (hasBeenSolved || !isInteractable) return;
-        if (ClueManager.Instance.GetCurrentClueID() != clueID)
+        if (isInteractable == false) return;
+        Light2D light = GetComponentInChildren<Light2D>();
+        if (light != null)
         {
-            // Wrong clue - give feedback
-            transform.DOShakePosition(0.5f, strength: 0.1f);
-            return;
+            light.intensity = 1f;
         }
-
-        // Correct clue
-        hasBeenSolved = true;
-        Debug.Log($"✅ {name}: Correct clue interacted!");
-        GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
-            .levelClues[ClueManager.Instance.currentClueIndex].clueSteps++;
-        if (GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
-            .levelClues[ClueManager.Instance.currentClueIndex].clueMaxSteps == GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
-            .levelClues[ClueManager.Instance.currentClueIndex].clueSteps)
-            ClueManager.Instance.OnClueSolved(clueID);
-
-        // Visual feedback
+        int returnVal = PatternManager.Instance.OnPetalPressed(supClueID);
+        if (returnVal == 0) light.intensity = 0f;
         transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
+        return;
     }
 
     public virtual void ResetClue()

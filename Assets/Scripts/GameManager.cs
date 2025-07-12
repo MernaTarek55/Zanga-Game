@@ -248,14 +248,14 @@ public class GameManager : MonoBehaviour
 
         poemTextUI.enabled = true;
         poemTextUI.text = ArabicFixer.Fix(verse);
-        poemTextUI.alpha = 0f;
 
-        // Fade in
-        poemTextUI.DOFade(1f, 0.5f).SetEase(Ease.InQuad);
-        yield return new WaitForSeconds(3.5f);
+        // Only fade in (no fade out)
+        if (poemTextUI.alpha < 1f) // Optional: Check if not already fully visible
+        {
+            poemTextUI.DOFade(1f, 0.5f).SetEase(Ease.InQuad);
+        }
 
-        // Fade out
-        poemTextUI.DOFade(0f, 0.5f).SetEase(Ease.OutQuad);
+        // Remove the fade-out part entirely
     }
 
     public LevelData GetCurrentLevel()

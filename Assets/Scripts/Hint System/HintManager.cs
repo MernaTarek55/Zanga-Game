@@ -72,9 +72,9 @@ public class HintManager : MonoBehaviour
         
     }
 
-    private List<ClueInteractable> GetValidActiveClues()
+    private List<InteractableBase> GetValidActiveClues()
     {
-        List<ClueInteractable> validClues = new List<ClueInteractable>();
+        List<InteractableBase> validClues = new List<InteractableBase>();
 
         var currentLevel = GameManager.Instance.GetCurrentLevel();
         if (currentLevel == null) return validClues;

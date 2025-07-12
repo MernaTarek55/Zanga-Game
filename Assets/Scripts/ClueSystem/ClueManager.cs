@@ -6,7 +6,8 @@ public class ClueManager : MonoBehaviour
 {
     public static ClueManager Instance;
 
-    public List<ClueInteractable> allClueObjects = new List<ClueInteractable>();
+    public List<InteractableBase> allClueObjects = new List<InteractableBase>();
+    public List<InteractableBase> currentSupClue = new List<InteractableBase>();
     public int currentClueIndex = 0;
     public bool AreAllCluesSolved = false;
     private void Awake()
@@ -19,6 +20,13 @@ public class ClueManager : MonoBehaviour
     }
 
     public void RegisterClueObject(ClueInteractable clue)
+    {
+        if (!allClueObjects.Contains(clue))
+        {
+            allClueObjects.Add(clue);
+        }
+    } 
+    public void RegisterClueObject(PetalInteractable clue)
     {
         if (!allClueObjects.Contains(clue))
         {
@@ -41,14 +49,25 @@ public class ClueManager : MonoBehaviour
             Debug.Log("🎉 Level completed!");
             AreAllCluesSolved = true;
             HintManager.Instance.SetEnabled(false);
-            GameManager.Instance.OnLevelCompleted();
+            //GameManager.Instance.OnLevelCompleted();
         }
         else
         {
+            
             ShowCurrentClue();
         }
     }
-
+    //public void GetAllCurrentCuleSupCles()
+    //{
+    //    ClueData[] clueDatas = GameManager.Instance.GetCurrentLevel().levelClues.ToArray();
+    //    foreach (var clue in allClueObjects)
+    //    {
+    //        if (clueDatas.Contains(clue.clueID))
+    //        {
+    //            currentSupClue.Add(clue);
+    //        }
+    //    }
+    //}
     public void ShowCurrentClue()
     {
         var currentLevel = GameManager.Instance.GetCurrentLevel();

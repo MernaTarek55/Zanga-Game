@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d19801924e8d145854b1d642ad7525, type: 3}
-  m_Name: Clue1
+  m_Name: Clue4-2
   m_EditorClassIdentifier: 
-  clueID: 0
-  clueText: "\u062F\u0648\u0631 \u0639\u0646\u062F \u0627\u0644\u0645\u0631\u0628\u0639"
-  validObjectIDs: 00000000
-  clueSteps: 0
+  clueID: 42
+  clueText: "\u0646\uFE8E\uFEDB\uFEE3\uFEDF\u0627 \u060C \r\n\uFEA2\uFE97\uFED4\uFE97
+    \uFE8E\uFBAD\uFE91 \u0641\u0648\uFBAD\uFEDB \u062D\uFE8E\uFBFE\u0631\uFEDF\u0627
+    \u0646\uFE8E\uFEDB\uFEE3\u0632\uFEDF\u0627\u0648 . "
+  validObjectIDs: 2a000000
+  clueSteps: 9
   clueMaxSteps: 0

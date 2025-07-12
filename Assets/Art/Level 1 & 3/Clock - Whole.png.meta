@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 1eda94df1e3c661419f4e9b3d9172a3e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3392335573332300045
+    second: Clock - Whole_0
+  - first:
+      213: -5639089396804761722
+    second: Clock - Whole_1
+  - first:
+      213: 2535714582173123242
+    second: Clock - Whole_2
+  - first:
+      213: -5733082083354935736
+    second: Clock - Whole_3
+  - first:
+      213: -6820526005415019088
+    second: Clock - Whole_4
+  - first:
+      213: 1529578678378984867
+    second: Clock - Whole_5
+  - first:
+      213: -766997198603611301
+    second: Clock - Whole_6
+  - first:
+      213: -922646960266385753
+    second: Clock - Whole_7
+  - first:
+      213: 4727129255752398736
+    second: Clock - Whole_8
+  - first:
+      213: -7040073576932876832
+    second: Clock - Whole_9
+  - first:
+      213: -4648053485334570205
+    second: Clock - Whole_10
+  - first:
+      213: 5362442775648778866
+    second: Clock - Whole_11
+  - first:
+      213: -3013057396336684089
+    second: Clock - Whole_12
+  - first:
+      213: -1559221034730044058
+    second: Clock - Whole_13
+  - first:
+      213: 238975427392043106
+    second: Clock - Whole_14
+  - first:
+      213: 8022556729465524506
+    second: Clock - Whole_15
+  - first:
+      213: -2126922658790280184
+    second: Clock - Whole_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Clock - Whole_0
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 566
+        width: 1869
+        height: 1869
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0194670b3ff31f20800000000000000
+      internalID: 3392335573332300045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_1
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 2410
+        width: 119
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687c7ce121eedb1b0800000000000000
+      internalID: -5639089396804761722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_2
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 2410
+        width: 97
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa2053a4afaa03320800000000000000
+      internalID: 2535714582173123242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_3
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 2387
+        width: 99
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84ef87968300070b0800000000000000
+      internalID: -5733082083354935736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_4
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 2345
+        width: 62
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bd7ce91cbf9851a0800000000000000
+      internalID: -6820526005415019088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_5
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1802
+        width: 103
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a57ac434b72a3510800000000000000
+      internalID: 1529578678378984867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_6
+      rect:
+        serializedVersion: 2
+        x: 2413
+        y: 1696
+        width: 30
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5313819c141b55f0800000000000000
+      internalID: -766997198603611301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_7
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1691
+        width: 76
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a66a306a791233f0800000000000000
+      internalID: -922646960266385753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_8
+      rect:
+        serializedVersion: 2
+        x: 2414
+        y: 1610
+        width: 59
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0977a7043032a9140800000000000000
+      internalID: 4727129255752398736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_9
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1293
+        width: 67
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ed5d46b162ac4e90800000000000000
+      internalID: -7040073576932876832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_10
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1186
+        width: 31
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32bdd954bfbce7fb0800000000000000
+      internalID: -4648053485334570205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_11
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 1211
+        width: 76
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27ab7e20b493b6a40800000000000000
+      internalID: 5362442775648778866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_12
+      rect:
+        serializedVersion: 2
+        x: 2349
+        y: 1137
+        width: 102
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c31d7b03487f26d0800000000000000
+      internalID: -3013057396336684089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_13
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 553
+        width: 62
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6654992eab88c5ae0800000000000000
+      internalID: -1559221034730044058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_14
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 537
+        width: 99
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 268ffb392e2015300800000000000000
+      internalID: 238975427392043106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_15
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 523
+        width: 98
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11563217d8d55f60800000000000000
+      internalID: 8022556729465524506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock - Whole_16
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 561
+        width: 119
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 804731a5c17ab72e0800000000000000
+      internalID: -2126922658790280184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Clock - Whole_0: 3392335573332300045
+      Clock - Whole_1: -5639089396804761722
+      Clock - Whole_10: -4648053485334570205
+      Clock - Whole_11: 5362442775648778866
+      Clock - Whole_12: -3013057396336684089
+      Clock - Whole_13: -1559221034730044058
+      Clock - Whole_14: 238975427392043106
+      Clock - Whole_15: 8022556729465524506
+      Clock - Whole_16: -2126922658790280184
+      Clock - Whole_2: 2535714582173123242
+      Clock - Whole_3: -5733082083354935736
+      Clock - Whole_4: -6820526005415019088
+      Clock - Whole_5: 1529578678378984867
+      Clock - Whole_6: -766997198603611301
+      Clock - Whole_7: -922646960266385753
+      Clock - Whole_8: 4727129255752398736
+      Clock - Whole_9: -7040073576932876832
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
