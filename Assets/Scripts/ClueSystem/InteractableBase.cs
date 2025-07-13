@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using System;
+using UnityEngine.Rendering.Universal;
 
 [Flags]
 public enum InteractionType
@@ -86,7 +87,7 @@ public class InteractableBase : MonoBehaviour
     {
         isInteractable = false;
 
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        
         Debug.Log("✅ Object snapped: " + gameObject.name);
         if (gameObject.CompareTag("hole"))
         {
@@ -94,15 +95,12 @@ public class InteractableBase : MonoBehaviour
             mountainObj.transform.GetChild(1).gameObject.SetActive(true);
             mountainObj.GetComponent<HandleOlive>().PlayLvl2EndSeq();
         }
-        if (sr != null)
+        if (clueID == 22)
         {
-            transform.DOScale(Vector3.one, 0.5f)
-    .SetEase(Ease.OutBack);
-
-            sr.DOColor(Color.white, 0.5f)
-                .SetEase(Ease.Linear)
-                .OnComplete(MakeObjectAppear);
+           
+            Clue2Lvl2Seq();
         }
+
 
     }
     void MakeObjectAppear()
@@ -167,6 +165,41 @@ public class InteractableBase : MonoBehaviour
         mousePos.z = 10f;
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
+    public void Clue2Lvl2Seq()
+    {
+        //Transform here supposed to be the moon transform
+        transform.DOScale(Vector3.one, 0.5f)
+        .SetEase(Ease.OutBack);
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.DOColor(Color.white, 0.5f)
+            .SetEase(Ease.Linear)
+            .OnComplete(MakeObjectAppear);
+        // Get references
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        Light2D light2D = transform.GetChild(0).GetComponent<Light2D>();
+        SpriteRenderer spriteRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+        // Create a DOTween sequence
+        Sequence sequence = DOTween.Sequence();
+
+        // Step 1: Tween alpha of SpriteRenderer to 50 (out of 255)
+        sequence.Append(DOTween.To(
+            () => spriteRenderer.color,
+            color => spriteRenderer.color = new Color(color.r, color.g, color.b, 50f / 255f),
+            new Color(0, 0, 0, 50f / 255f),
+            2f // duration
+        ));
+
+        // Step 2: Tween light intensity to 3
+        sequence.Append(DOTween.To(
+            () => light2D.intensity,
+            x => light2D.intensity = x,
+            3f,
+            1f // duration
+        ));
+    }
     public virtual void PlayHintAnimation() { }
 }

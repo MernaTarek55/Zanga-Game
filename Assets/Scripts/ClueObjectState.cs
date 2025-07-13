@@ -4,9 +4,9 @@ using UnityEngine;
 public class ObjectState
 {
     public GameObject obj;
-    [HideInInspector] public Vector3 initialPosition;
-    [HideInInspector] public Vector3 initialScale;
-    [HideInInspector] public Quaternion initialRotation;
-    [HideInInspector] public bool initialActiveState;
+    /*[HideInInspector]*/ public Vector3 initialPosition;
+    /*[HideInInspector]*/ public Vector3 initialScale;
+    /*[HideInInspector]*/ public Quaternion initialRotation;
+    /*[HideInInspector]*/ public bool initialActiveState;
     public bool isblocked = false;
 }

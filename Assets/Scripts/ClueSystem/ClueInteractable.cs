@@ -2,6 +2,7 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ClueInteractable : InteractableBase
 {
@@ -182,5 +183,6 @@ public class ClueInteractable : InteractableBase
         transform.DOPunchScale(Vector3.one * 0.2f, 0.4f, 5, 1)
             .SetLoops(2, LoopType.Yoyo);
     }
-
+    
+    
 }

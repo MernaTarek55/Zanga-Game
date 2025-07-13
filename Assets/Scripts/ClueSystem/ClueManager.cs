@@ -40,6 +40,7 @@ public class ClueManager : MonoBehaviour
             GameManager.Instance.levels[GameManager.Instance.currentLevelIndex].levelClues[currentClueIndex].clueSteps = 0;
         if (GameManager.Instance.levels[GameManager.Instance.currentLevelIndex].levelClues[currentClueIndex].clueID == 21)
             GameManager.Instance.Clue2Lvl1Seq();
+        
         currentClueIndex++;
 
         // Get current level's clues

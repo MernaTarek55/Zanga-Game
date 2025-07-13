@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Transform environmentParent;
     public List<Vector3> levelPositions;
     public Ease movementEase = Ease.InOutQuad;
+    [SerializeField] float timeBeforGoToNextLevel = 4f; 
 
     [Header("References")]
     public Camera mainCamera;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     [Header("Win Panel")]
     [SerializeField] GameObject winpanel;
     [SerializeField] Image winpanelImage;
+    [SerializeField] float showWinPanelTime = 2f; 
 
     [Header("Character reference")]
     [SerializeField] Transform mainCharacter; //NEEDS TO BE UPDATED IN EACH LEVEL
@@ -138,11 +140,17 @@ public class GameManager : MonoBehaviour
         if (IsLastLevel() && ClueManager.Instance.AreAllCluesSolved)
         {
             StopTimer();
-            ShowWinPanel();
+            Sequence winSequence = DOTween.Sequence();
+
+            winSequence.AppendInterval(showWinPanelTime);
+
+            winSequence.AppendCallback(() => {
+                ShowWinPanel();
+            });
             return;
         }
-
-        DOVirtual.DelayedCall(3f, () =>
+        if (currentLevelIndex == 0) Clue3Lvl1Seq();
+        DOVirtual.DelayedCall(timeBeforGoToNextLevel, () =>
         {
             if (IsLastLevel())
             {
@@ -151,6 +159,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                
                 currentLevelIndex++;
                 TransitionToNextLevel();
             }
@@ -270,15 +279,7 @@ public class GameManager : MonoBehaviour
     private void OnTimeExpiredReset()
     {
         // 1. Disable cage animator and drop the cage
-        Cage.GetComponent<Animator>().enabled = false;
-        Cage.transform.DOMove(
-            new Vector3(
-                Cage.transform.localPosition.x,
-                Cage.transform.localPosition.y - 3.5f,
-                0
-            ),
-            1f
-        );
+        
 
         DOVirtual.DelayedCall(
             2f,
@@ -370,43 +371,14 @@ public class GameManager : MonoBehaviour
     public void Clue3Lvl1Seq()
     {
         Sequence endLvl1Seq = DOTween.Sequence();
-        endLvl1Seq.Append(Cage.transform.DOLocalMoveY(Cage.transform.position.y + 7, 3));
+        endLvl1Seq.Append(firstCage.transform.DOLocalMoveY(firstCage.transform.position.y + 7, 3));
         endLvl1Seq.Append(mainCharacter.DOLocalMoveX(mainCharacter.position.x + 20, 5));
         endLvl1Seq.Join(mainCharacter.GetChild(0).DOLocalMoveY(0.85f, 1).SetLoops(-1, LoopType.Yoyo));
-        endLvl1Seq.Join(mainCharacter.GetChild(1).DOLocalMoveY(-0.05f, 0.8f).SetLoops(-1, LoopType.Yoyo))
-        .OnComplete(() =>
-        {
-            //NEED TO DESTROY CHARACTER AND REFERENCE THE NEW ONE
-        });
+        endLvl1Seq.Join(mainCharacter.GetChild(1).DOLocalMoveY(-0.05f, 0.8f).SetLoops(-1, LoopType.Yoyo));
     }
 
 
-    public void Clue2Lvl2Seq()
-    {
-        //Transform here supposed to be the moon transform
-          // Get references
-        Light2D light2D = transform.GetChild(0).GetComponent<Light2D>();
-        SpriteRenderer spriteRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
-
-        // Create a DOTween sequence
-        Sequence sequence = DOTween.Sequence();
-
-        // Step 1: Tween alpha of SpriteRenderer to 50 (out of 255)
-        sequence.Append(DOTween.To(
-            () => spriteRenderer.color,
-            color => spriteRenderer.color = new Color(color.r, color.g, color.b, 50f / 255f),
-            new Color(0, 0, 0, 50f / 255f),
-            2f // duration
-        ));
-
-        // Step 2: Tween light intensity to 3
-        sequence.Append(DOTween.To(
-            () => light2D.intensity,
-            x => light2D.intensity = x,
-            3f,
-            1f // duration
-        ));
-    }
+    
 
     #endregion
 }

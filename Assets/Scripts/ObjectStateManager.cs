@@ -45,15 +45,11 @@ public class ObjectStateManager : MonoBehaviour
                 state.obj.transform.localScale = state.initialScale;
                 state.obj.transform.localRotation = state.initialRotation;
                 state.obj.SetActive(state.initialActiveState);
-
-                // Reset any additional components
-                var rb = state.obj.GetComponent<Rigidbody>();
-                if (rb != null)
+                if (state.obj.GetComponent<SpriteRenderer>() != null)
                 {
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
+                    state.obj.GetComponent<SpriteRenderer>().enabled = true;
                 }
-
+                
             }
             if (state.obj.GetComponent<ClueInteractable>() != null)
             {

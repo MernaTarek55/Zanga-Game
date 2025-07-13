@@ -61,6 +61,7 @@ public class PatternManager : MonoBehaviour
         moon.SetActive(true);
         SetAllPetalsIntensity(1f);
         ClueManager.Instance.OnClueSolved(clue.clueID);
+        
     }
 
     public static void SetAllPetalsIntensity(float intensity)
