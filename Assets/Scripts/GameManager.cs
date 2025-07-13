@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
     void ShowWinPanel()
     {
         winpanel.SetActive(true);
-
+        AudioManager.Instance.StopSFX();
         // Set initial transparent color
         Color newColor = winpanelImage.color;
         newColor.a = 0f;
@@ -206,6 +206,7 @@ public class GameManager : MonoBehaviour
         {
             if (IsLastLevel())
             {
+                AudioManager.Instance.PlayMusic(SoundType.LastLevelBG);
                 lastLevelHandle.enabled = true;
                 StartTimer();
                 DisableHintsForFinalLevel();
@@ -236,12 +237,6 @@ public class GameManager : MonoBehaviour
         {
             // Your last level completion logic
         });
-    }
-    private IEnumerator ZoomInCamera()
-    {
-        mainCamera.DOOrthoSize(zoomedInSize, zoomInDuration)
-                 .SetEase(Ease.InOutQuad);
-        yield return new WaitForSeconds(zoomInDuration);
     }
 
     private bool IsLastLevel()

@@ -9,6 +9,7 @@ public class GeneralInteractable : InteractableBase
         {
             Debug.Log("✅ General object interacted!");
             // You can add animations, sounds, effects, etc.
+            AudioManager.Instance.PlaySound(SoundType.correctInteraction);
             transform.DOPunchScale(Vector3.one * 0.1f, 0.3f);
         }
     }

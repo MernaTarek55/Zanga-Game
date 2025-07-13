@@ -3,6 +3,12 @@ public enum SoundType
 {
     BG,
     LastLevelBG,
+    correctInteraction,
+    WindLoop,
+    TreeGrowing,
+    WrongInteraction,
+    cageFalling,
+    BranchBreaking,
 
 }
 [CreateAssetMenu(fileName = "SoundLibrary", menuName = "SoundLibrary")]

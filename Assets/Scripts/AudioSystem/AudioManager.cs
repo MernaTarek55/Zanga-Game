@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     public SoundLibrary soundLibrary;
     public AudioSource soundEffectSource;
+    public AudioSource loopsoundEffectSource;
     public AudioSource musicSource;
 
     float musicVolume = .5f;
@@ -41,10 +42,10 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = soundLibrary.GetRandomClip(soundType);
         if (clip != null)
         {
-            soundEffectSource.clip = clip;
-            soundEffectSource.loop = true;
-            soundEffectSource.volume = soundEffectVolume;
-            soundEffectSource.Play();
+            loopsoundEffectSource.clip = clip;
+            loopsoundEffectSource.loop = true;
+            loopsoundEffectSource.volume = soundEffectVolume;
+            loopsoundEffectSource.Play();
         }
 
     }

@@ -49,9 +49,11 @@ public class ClueInteractable : InteractableBase
                 GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
                 .levelClues[ClueManager.Instance.currentClueIndex].clueMaxSteps)
             {
-                if (tree != null) tree.SetActive(true);
-                
-                    ClueManager.Instance.OnClueSolved(clueID);
+                if (tree != null) {
+                    tree.SetActive(true);
+                   }
+                    AudioManager.Instance.PlaySound(SoundType.correctInteraction);
+                ClueManager.Instance.OnClueSolved(clueID);
             }
         }
     }
@@ -115,12 +117,13 @@ public class ClueInteractable : InteractableBase
         {
             // Wrong clue - give feedback
             transform.DOShakePosition(0.5f, strength: 0.1f);
+            AudioManager.Instance.PlaySound(SoundType.WrongInteraction);
             return;
         }
 
         // Correct clue
         hasBeenSolved = true;
-        
+        AudioManager.Instance.PlaySound(SoundType.correctInteraction);
         Debug.Log($"✅ {name}: Correct clue interacted!");
         GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
             .levelClues[ClueManager.Instance.currentClueIndex].clueSteps++;

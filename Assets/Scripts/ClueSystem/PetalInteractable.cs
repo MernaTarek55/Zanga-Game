@@ -63,8 +63,13 @@ public class PetalInteractable : InteractableBase
             light.intensity = 1f;
         }
         int returnVal = PatternManager.Instance.OnPetalPressed(supClueID);
-        if (returnVal == 0) light.intensity = 0f;
-        transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
+        if (returnVal == 0)
+        {
+            light.intensity = 0f;
+            AudioManager.Instance.PlaySound(SoundType.WrongInteraction);
+        }
+        else { AudioManager.Instance.PlaySound(SoundType.correctInteraction); }
+            transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
         return;
     }
 

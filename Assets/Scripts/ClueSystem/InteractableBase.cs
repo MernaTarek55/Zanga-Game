@@ -86,14 +86,15 @@ public class InteractableBase : MonoBehaviour
     protected virtual void HandleSnapComplete()
     {
         isInteractable = false;
+        AudioManager.Instance.PlaySound(SoundType.correctInteraction);
 
-        
         Debug.Log("✅ Object snapped: " + gameObject.name);
         if (gameObject.CompareTag("hole"))
         {
             GameObject mountainObj = GameObject.FindGameObjectWithTag("Mountain");
             mountainObj.transform.GetChild(1).gameObject.SetActive(true);
             mountainObj.GetComponent<HandleOlive>().PlayLvl2EndSeq();
+            AudioManager.Instance.PlaySoundLoop(SoundType.WindLoop);
         }
         if (clueID == 22)
         {
@@ -157,6 +158,7 @@ public class InteractableBase : MonoBehaviour
     public virtual void OnTap()
     {
         Debug.Log($"{gameObject.name} was tapped!");
+        AudioManager.Instance.PlaySound(SoundType.correctInteraction);
     }
 
     private Vector3 GetMouseWorldPos()
@@ -167,6 +169,7 @@ public class InteractableBase : MonoBehaviour
     }
     public void Clue2Lvl2Seq()
     {
+        AudioManager.Instance.PlaySound(SoundType.TreeGrowing);
         //Transform here supposed to be the moon transform
         transform.DOScale(Vector3.one, 0.5f)
         .SetEase(Ease.OutBack);
