@@ -64,8 +64,19 @@ public class InteractableBase : MonoBehaviour
         }
         foreach (var clue in FindObjectsOfType<ClueInteractable>())
         {
-            if(clue.IsBlocked)
+                if (clue.IsBlocked)
+                {
                 clue.CheckIfBlocked();
+                    if(!clue.IsBlocked)
+                    {
+                    transform.DOScale(0, 0.4f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() => {
+                // Trigger the snap event
+                this.gameObject.SetActive(false);
+            });
+                }
+                }
         }
     }
     protected virtual void HandleSnapComplete()

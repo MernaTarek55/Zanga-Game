@@ -18,15 +18,7 @@ public class ClueInteractable : InteractableBase
             if (_isBlocked && !value)
             {
                 OnUnblocked?.Invoke(this);
-                ClueManager.Instance.OnClueSolved(clueID);
-                if (clueID == 11)
-                {
-                    transform.DOPunchScale(Vector3.one * 0.2f, 0.3f).OnComplete(() =>
-                    {
-                        gameObject.SetActive(false);
-                        rock.SetActive(true);
-                    });
-                }
+                
             }
             _isBlocked = value;
         }
@@ -106,7 +98,16 @@ public class ClueInteractable : InteractableBase
         {
             Debug.Log($"🟢 {name} is NOW UNBLOCKED!");
             OnUnblocked?.Invoke(this); // Optional: Trigger an event
-            
+            ClueManager.Instance.OnClueSolved(clueID);
+            if (clueID == 11)
+            {
+                transform.DOPunchScale(Vector3.one * 0.2f, 0.3f).OnComplete(() =>
+                {
+                    gameObject.SetActive(false);
+                    rock.SetActive(true);
+                });
+            }
+
         }
 
         _wasBlockedLastFrame = IsBlocked; // Update for next check
