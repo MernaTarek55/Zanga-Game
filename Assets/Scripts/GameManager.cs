@@ -372,9 +372,11 @@ public class GameManager : MonoBehaviour
     {
         Sequence endLvl1Seq = DOTween.Sequence();
         endLvl1Seq.Append(firstCage.transform.DOLocalMoveY(firstCage.transform.position.y + 7, 3));
-        endLvl1Seq.Append(mainCharacter.DOLocalMoveX(mainCharacter.position.x + 20, 5));
-        endLvl1Seq.Join(mainCharacter.GetChild(0).DOLocalMoveY(0.85f, 1).SetLoops(-1, LoopType.Yoyo));
-        endLvl1Seq.Join(mainCharacter.GetChild(1).DOLocalMoveY(-0.05f, 0.8f).SetLoops(-1, LoopType.Yoyo));
+        endLvl1Seq.Append(mainCharacter.DOLocalMoveX(mainCharacter.position.x + 17, 2.5f)).OnComplete(() =>
+                 {
+                     Destroy(mainCharacter.gameObject);
+                 });
+       
     }
 
 
