@@ -9,6 +9,7 @@ public enum SoundType
     WrongInteraction,
     cageFalling,
     BranchBreaking,
+    VerseReveal,
 
 }
 [CreateAssetMenu(fileName = "SoundLibrary", menuName = "SoundLibrary")]

@@ -8,8 +8,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource loopsoundEffectSource;
     public AudioSource musicSource;
 
-    float musicVolume = .5f;
-    float soundEffectVolume = .5f;
+    float musicVolume = 1f;
+    float soundEffectVolume = 1f;
 
     public float MusicVolume => musicVolume;
     public float SoundEffectVolume => soundEffectVolume;
@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopSFX()
     {
-        soundEffectSource.Stop();
+        loopsoundEffectSource.Stop();
     }
 
     public void SetMusicVolume(float volume)

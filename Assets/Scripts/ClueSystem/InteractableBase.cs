@@ -73,6 +73,7 @@ public class InteractableBase : MonoBehaviour
                 clue.CheckIfBlocked();
                     if(!clue.IsBlocked)
                     {
+                    AudioManager.Instance.PlaySound(SoundType.correctInteraction);
                     transform.DOScale(0, 0.4f)
             .SetEase(Ease.OutBack)
             .OnComplete(() => {

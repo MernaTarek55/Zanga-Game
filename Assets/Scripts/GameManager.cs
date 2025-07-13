@@ -117,6 +117,8 @@ public class GameManager : MonoBehaviour
         }
         if (currentLevelIndex == 0)
         {
+            AudioManager.Instance.PlayMusic(SoundType.BG);
+            AudioManager.Instance.PlaySound(SoundType.cageFalling);
             firstCage.transform.DOMove(new Vector3(firstCage.transform.localPosition.x, firstCage.transform.localPosition.y - 7f, 0), 1f);
         }
         if (currentLevelIndex < levelPositions.Count)
@@ -314,7 +316,7 @@ public class GameManager : MonoBehaviour
     public void ShowNextVerse(Sprite verseImage)
     {
         if (verseImage == null) return;
-
+        AudioManager.Instance.PlaySound(SoundType.VerseReveal);
         DOTween.Kill(poemImageUI);
 
         poemImageUI.sprite = verseImage;

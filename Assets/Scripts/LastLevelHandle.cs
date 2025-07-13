@@ -27,7 +27,7 @@ public class LastLevelHandle : MonoBehaviour
             int swingLoops = 3;               // Number of yoyo swings (3 full swings)
 
             Sequence branchSequence = DOTween.Sequence();
-
+            AudioManager.Instance.PlaySound(SoundType.BranchBreaking);
             // Step 1: Big initial swing (as if branch snapped)
             branchSequence.Append(
                 branch.DOLocalRotate(new Vector3(0, 0, bigSwingAngle), bigSwingDuration)
