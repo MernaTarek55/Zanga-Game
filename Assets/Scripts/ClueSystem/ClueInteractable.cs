@@ -50,16 +50,7 @@ public class ClueInteractable : InteractableBase
                 .levelClues[ClueManager.Instance.currentClueIndex].clueMaxSteps)
             {
                 if (tree != null) tree.SetActive(true);
-                else
-                {
-                    transform.DOMove(new Vector3(6f, 1f, 0f), 2f)
-                        .SetEase(Ease.OutBack)
-                        .OnComplete(() =>
-                        {
-                            transform.rotation = originalRotation;
-                            SetInteractable(false);
-                        });
-                }
+                
                     ClueManager.Instance.OnClueSolved(clueID);
             }
         }
