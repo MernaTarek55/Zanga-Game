@@ -38,12 +38,13 @@ public class ClueManager : MonoBehaviour
     {
         Debug.Log($"✅ Clue {solvedID} solved!");
             GameManager.Instance.levels[GameManager.Instance.currentLevelIndex].levelClues[currentClueIndex].clueSteps = 0;
+        if (GameManager.Instance.levels[GameManager.Instance.currentLevelIndex].levelClues[currentClueIndex].clueID == 21)
+            GameManager.Instance.Clue2Lvl1Seq();
         currentClueIndex++;
 
         // Get current level's clues
         var currentLevel = GameManager.Instance.GetCurrentLevel();
         if (currentLevel == null) return;
-
         // Check if solved all clues for current level
         if (currentClueIndex >= currentLevel.levelClues.Count)
         {
