@@ -92,6 +92,7 @@ public class ClueInteractable : InteractableBase
 
         // Correct clue
         hasBeenSolved = true;
+        
         Debug.Log($"✅ {name}: Correct clue interacted!");
         GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
             .levelClues[ClueManager.Instance.currentClueIndex].clueSteps++;
@@ -101,14 +102,20 @@ public class ClueInteractable : InteractableBase
         {
             if (clueID == 11)
             {
-                gameObject.SetActive(false);
+                transform.DOPunchScale(Vector3.one * 0.2f, 0.3f).OnComplete(() =>
+                {
+                    gameObject.SetActive(false);
                 rock.SetActive(true);
-                ClueManager.Instance.OnClueSolved(clueID);
+                });
             }
+            else
+            {
+                transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
+            }
+                ClueManager.Instance.OnClueSolved(clueID);
         }
 
         // Visual feedback
-        transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
     }
 
     public virtual void ResetClue()

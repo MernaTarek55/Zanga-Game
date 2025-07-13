@@ -91,12 +91,12 @@ public class InteractableBase : MonoBehaviour
             child.gameObject.SetActive(true);
         }
         if(tree == null) return;
-        if (tree.GetComponent<InteractableBase>() == null)
-        {
+        //if (tree.GetComponent<InteractableBase>() == null)
+        //{
 
-        Vector3 pos = new Vector3(tree.transform.position.x , tree.transform.position.y+10 , tree.transform.position.z);
-        tree.transform.DOMove(pos  , 1.5f).SetEase(Ease.OutCubic);
-        }
+        //Vector3 pos = new Vector3(tree.transform.position.x , tree.transform.position.y+10 , tree.transform.position.z);
+        //tree.transform.DOMove(pos  , 1.5f).SetEase(Ease.OutCubic);
+        //}
 
     }
     private void OnMouseOver()

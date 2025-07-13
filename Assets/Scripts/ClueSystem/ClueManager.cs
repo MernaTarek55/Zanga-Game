@@ -37,6 +37,7 @@ public class ClueManager : MonoBehaviour
     public void OnClueSolved(int solvedID)
     {
         Debug.Log($"✅ Clue {solvedID} solved!");
+            GameManager.Instance.levels[GameManager.Instance.currentLevelIndex].levelClues[currentClueIndex].clueSteps = 0;
         currentClueIndex++;
 
         // Get current level's clues

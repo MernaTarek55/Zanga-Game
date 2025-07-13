@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Clue3-2
   m_EditorClassIdentifier: 
   clueID: 32
-  clueText: "\u0646\uFE8E\uFE91 \u060C \r\n\u0627\u0630\u0625 \u062F\uFE8E\uFECB
-    \u062A\u0631\uFE8E\uFEBB \u0621\uFE8E\uFE97 \uFE94\u0637\u0648\uFE91\u0631\uFEE3
-    \u0646\u0627\u0648\uFEDB\uFEF7\uFE8E\uFE91 . "
+  clueImage: {fileID: 21300000, guid: 0f7dca8b4a789a84cbf22c5433c6a773, type: 3}
   validObjectIDs: 20000000
-  clueSteps: 0
+  clueSteps: 3
   clueMaxSteps: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Clue2-1
   m_EditorClassIdentifier: 
   clueID: 21
-  clueText: "\u062F\u0648\u0631 \u0639\u0646\u062F \u0627\u0644\u062F\u0627\u0626\u0631\u0647"
+  clueImage: {fileID: 21300000, guid: d5bda83dbfedbc842a8d499945db572e, type: 3}
   validObjectIDs: 15000000
-  clueSteps: 1
+  clueSteps: 0
   clueMaxSteps: 1
