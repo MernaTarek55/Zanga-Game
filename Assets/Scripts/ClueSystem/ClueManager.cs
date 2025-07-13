@@ -78,7 +78,7 @@ public class ClueManager : MonoBehaviour
         }
 
         // Show current clue text
-        GameManager.Instance.ShowNextVerse(currentLevel.levelClues[currentClueIndex].clueText);
+        GameManager.Instance.ShowNextVerse(currentLevel.levelClues[currentClueIndex].clueImage);
 
         // Enable valid objects for this clue
         EnableValidObjects(currentLevel.levelClues[currentClueIndex].validObjectIDs);

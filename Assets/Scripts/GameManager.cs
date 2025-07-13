@@ -5,6 +5,7 @@ using TMPro;
 using DG.Tweening;
 using ArabicSupport;
 using UnityEngine.LowLevelPhysics;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public Camera mainCamera;
-    public TextMeshProUGUI poemTextUI;
+    public Image poemImageUI;
     private Vector3 originalCameraPosition;
 
     [Header("First Level Settings")]
@@ -240,28 +241,22 @@ public class GameManager : MonoBehaviour
         ReturnToFirstLevel();
     }
 
-    public void ShowNextVerse(string verseText)
+    public void ShowNextVerse(Sprite verseImage)
     {
-        if (string.IsNullOrEmpty(verseText)) return;
-        levels[currentLevelIndex].levelClues[ClueManager.Instance.currentClueIndex].clueSteps = 0;
-        StopCoroutine("DisplayVerseCoroutine");
-        StartCoroutine(DisplayVerseCoroutine(verseText));
-    }
+        if (verseImage == null) return;
 
-    private IEnumerator DisplayVerseCoroutine(string verse)
-    {
-        if (poemTextUI == null) yield break;
+        DOTween.Kill(poemImageUI);
 
-        poemTextUI.enabled = true;
-        poemTextUI.text = ArabicFixer.Fix(verse);
+        poemImageUI.sprite = verseImage;
+        poemImageUI.enabled = true;
 
-        // Only fade in (no fade out)
-        if (poemTextUI.alpha < 1f) // Optional: Check if not already fully visible
-        {
-            poemTextUI.DOFade(1f, 0.5f).SetEase(Ease.InQuad);
-        }
+        // Set initial transparency
+        Color startColor = poemImageUI.color;
+        startColor.a = 0f;
+        poemImageUI.color = startColor;
 
-        // Remove the fade-out part entirely
+        Sequence verseSequence = DOTween.Sequence();
+        verseSequence.Append(poemImageUI.DOFade(1f,1f).SetEase(Ease.InQuad)); // Fade In
     }
 
     public LevelData GetCurrentLevel()
