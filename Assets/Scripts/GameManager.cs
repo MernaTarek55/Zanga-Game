@@ -293,11 +293,11 @@ public class GameManager : MonoBehaviour
         Sequence resetSeq = DOTween.Sequence();
         
 
+            currentLevelIndex = 0;
         resetSeq.Append(environmentParent.DOMove(levelPositions[0], levelTransitionDuration));
         
         resetSeq.InsertCallback(levelTransitionDuration * 0.5f, () => {
             ObjectStateManager.Instance.ResetAllObjects();
-            currentLevelIndex = 0;
             ClueManager.Instance.ResetAllClues();
         });
 
@@ -374,7 +374,7 @@ public class GameManager : MonoBehaviour
         endLvl1Seq.Append(firstCage.transform.DOLocalMoveY(firstCage.transform.position.y + 7, 3));
         endLvl1Seq.Append(mainCharacter.DOLocalMoveX(mainCharacter.position.x + 17, 2.5f)).OnComplete(() =>
                  {
-                     Destroy(mainCharacter.gameObject);
+                     mainCharacter.gameObject.SetActive(false);
                  });
        
     }

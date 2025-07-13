@@ -1233,7 +1233,7 @@ MonoBehaviour:
   lastLevelHandle: {fileID: 1240578883}
   winpanel: {fileID: 1826892642}
   winpanelImage: {fileID: 958138704}
-  showWinPanelTime: 3
+  showWinPanelTime: 7
   mainCharacter: {fileID: 396984066}
 --- !u!4 &185361672
 Transform:

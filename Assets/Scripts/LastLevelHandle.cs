@@ -24,7 +24,7 @@ public class LastLevelHandle : MonoBehaviour
 
              float smallSwingAngle = 8f;        // Small swing arc
             float smallSwingDuration = 1.2f;
-            int swingLoops = 8;               // Number of yoyo swings (3 full swings)
+            int swingLoops = 3;               // Number of yoyo swings (3 full swings)
 
             Sequence branchSequence = DOTween.Sequence();
 
