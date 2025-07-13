@@ -85,6 +85,11 @@ public class InteractableBase : MonoBehaviour
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         Debug.Log("✅ Object snapped: " + gameObject.name);
+        if (gameObject.CompareTag("hole"))
+        {
+            GameObject mountainObj = GameObject.FindGameObjectWithTag("Mountain");
+            mountainObj.transform.GetChild(1).gameObject.SetActive(true);
+        }
         if (sr != null)
         {
             transform.DOScale(Vector3.one, 0.5f)
