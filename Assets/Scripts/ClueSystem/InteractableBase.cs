@@ -39,6 +39,7 @@ public class InteractableBase : MonoBehaviour
             offset = transform.position - GetMouseWorldPos();
             isDragging = true;
         }
+        
     }
 
     private void OnMouseDrag()

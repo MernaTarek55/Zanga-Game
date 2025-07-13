@@ -1,4 +1,5 @@
 ﻿
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,7 +7,31 @@ public class ClueInteractable : InteractableBase
 {
     private Vector3 originalPosition;
     private Quaternion originalRotation;
-    public bool IsBlocked = false;
+    public static event Action<ClueInteractable> OnUnblocked;
+
+    private bool _isBlocked;
+    public bool IsBlocked
+    {
+        get => _isBlocked;
+        set
+        {
+            if (_isBlocked && !value)
+            {
+                OnUnblocked?.Invoke(this);
+                ClueManager.Instance.OnClueSolved(clueID);
+                if (clueID == 11)
+                {
+                    transform.DOPunchScale(Vector3.one * 0.2f, 0.3f).OnComplete(() =>
+                    {
+                        gameObject.SetActive(false);
+                        rock.SetActive(true);
+                    });
+                }
+            }
+            _isBlocked = value;
+        }
+    }
+
     [SerializeField] private GameObject rock;
     void Start()
     {
@@ -15,7 +40,7 @@ public class ClueInteractable : InteractableBase
         ClueManager.Instance.RegisterClueObject(this);
         CheckIfBlocked();
     }
-
+    private bool _wasBlockedLastFrame;
     protected override void HandleSnapComplete()
     {
         base.HandleSnapComplete(); // Do the base visual feedback
@@ -48,19 +73,19 @@ public class ClueInteractable : InteractableBase
     }
     public void CheckIfBlocked()
     {
-        IsBlocked = false;
+        bool wasBlockedBefore = IsBlocked; // Store current state before checking
+        IsBlocked = false; // Reset before raycast
 
         Vector3 rayOrigin = transform.position;
         Vector3 direction = Vector3.back; // -Z axis
-
-        float rayDistance = 10f; // Long enough to reach any blockers behind
+        float rayDistance = 10f;
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, direction, rayDistance);
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider == null) continue;
-            if (hit.collider.gameObject == gameObject) continue;
+            if (hit.collider == null || hit.collider.gameObject == gameObject)
+                continue;
 
             InteractableBase blocker = hit.collider.GetComponent<InteractableBase>();
             if (blocker != null && blocker.isInteractable)
@@ -70,11 +95,21 @@ public class ClueInteractable : InteractableBase
                 break;
             }
         }
+
+        // Update collider state
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)
             col.enabled = !IsBlocked;
 
-        SetInteractable(!IsBlocked );
+        // 🔥 NEW: Check if JUST UNBLOCKED (was blocked, now isn't)
+        if (wasBlockedBefore && !IsBlocked)
+        {
+            Debug.Log($"🟢 {name} is NOW UNBLOCKED!");
+            OnUnblocked?.Invoke(this); // Optional: Trigger an event
+            
+        }
+
+        _wasBlockedLastFrame = IsBlocked; // Update for next check
     }
 
 
@@ -100,18 +135,8 @@ public class ClueInteractable : InteractableBase
             .levelClues[ClueManager.Instance.currentClueIndex].clueMaxSteps == GameManager.Instance.levels[GameManager.Instance.currentLevelIndex]
             .levelClues[ClueManager.Instance.currentClueIndex].clueSteps)
         {
-            if (clueID == 11)
-            {
-                transform.DOPunchScale(Vector3.one * 0.2f, 0.3f).OnComplete(() =>
-                {
-                    gameObject.SetActive(false);
-                rock.SetActive(true);
-                });
-            }
-            else
-            {
+            
                 transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
-            }
                 ClueManager.Instance.OnClueSolved(clueID);
         }
 

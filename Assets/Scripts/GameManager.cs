@@ -33,11 +33,17 @@ public class GameManager : MonoBehaviour
     public float lastLevelDuration = 60f;
     public float zoomInDuration = 2f;
     public float zoomedInSize = 3f; 
-    public Transform clockBranch; 
+    public Transform clockBranch;
+    public float tickInterval = 1f;
+    private float lastTickTime;
     private float lastLevelTimer;
     private bool isTimerActive;
     [SerializeField] GameObject Cage;
     [SerializeField] LastLevelHandle lastLevelHandle;
+
+    [Header("Win Panel")]
+    [SerializeField] GameObject winpanel;
+    [SerializeField] Image winpanelImage;
     private void Awake()
     {
         //AdjustCamera();
@@ -63,22 +69,32 @@ public class GameManager : MonoBehaviour
         {
             lastLevelTimer -= Time.deltaTime;
 
-            float rotationProgress = 1 - (lastLevelTimer / lastLevelDuration);
-
-            if (clockBranch != null)
+            // Tick every `tickInterval` seconds
+            if (Time.time - lastTickTime >= tickInterval)
             {
-                clockBranch.rotation = Quaternion.Euler(0, 0, -360 * rotationProgress);
+                lastTickTime = Time.time;
+                TickTock();
             }
 
             if (lastLevelTimer <= 0)
             {
-                // Timer ended
                 isTimerActive = false;
                 OnTimerFinished();
             }
         }
     }
+    void TickTock()
+    {
+        if (clockBranch == null) return;
 
+        float totalTicks = lastLevelDuration / tickInterval;
+        float angleStep = 360f / totalTicks;
+
+        clockBranch.Rotate(0, 0, -angleStep);
+
+        // Play tick sound (optional)
+        // AudioManager.Instance.Play("TickSound");
+    }
     public void InitializeLevel()
     {
         if (IsLastLevel())
@@ -106,56 +122,98 @@ public class GameManager : MonoBehaviour
 
     public void OnLevelCompleted()
     {
-        StopTimer(); // Stop timer when level is completed
+        StopTimer();
 
-        if (IsLastLevel())
+        if (IsLastLevel() && ClueManager.Instance.AreAllCluesSolved)
         {
-            if (ClueManager.Instance.AreAllCluesSolved)
+            StopTimer();
+            ShowWinPanel();
+            return;
+        }
+
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            if (IsLastLevel())
             {
-
-                StopTimer();
-                //Win State
-                return;
+                CompleteLastLevel();
             }
-            StartCoroutine(CompleteLastLevel());
-        }
-        else
-        {
-            currentLevelIndex++;
-            StartCoroutine(TransitionToNextLevel());
-        }
+            else
+            {
+                currentLevelIndex++;
+                TransitionToNextLevel();
+            }
+        });
     }
-
-    private IEnumerator TransitionToNextLevel()
+    void ShowWinPanel()
     {
-        Vector3 targetPosition = levelPositions[currentLevelIndex];
-        environmentParent.DOMove(targetPosition, levelTransitionDuration)
-            .SetEase(movementEase);
+        winpanel.SetActive(true);
 
-        yield return new WaitForSeconds(levelTransitionDuration);
+        // Set initial transparent color
+        Color newColor = winpanelImage.color;
+        newColor.a = 0f;
+        winpanelImage.color = newColor;
 
-        if (IsLastLevel())
-        {
-            lastLevelHandle.enabled = true;
-            StartTimer();
-            DisableHintsForFinalLevel();
-        }
-
-        ClueManager.Instance.ResetForNewLevel();
-        ClueManager.Instance.ShowCurrentClue();
+        // Fade in the image
+        winpanelImage.DOFade(1f, 1f).SetEase(Ease.InQuad);
     }
-
-    private IEnumerator CompleteLastLevel()
+    private void TransitionToNextLevel()
     {
-        // Zoom in when completing last level
-        yield return ZoomInCamera();
+        Sequence transition = DOTween.Sequence();
 
-        // Wait a moment before resetting
-        yield return new WaitForSeconds(1f);
+        // 1. Move environment
+        transition.Append(
+            environmentParent.DOMove(levelPositions[currentLevelIndex], levelTransitionDuration)
+            .SetEase(movementEase)
+        );
 
-        ReturnToFirstLevel();
+        // 2. Show clue at 50% of transition (FIXED VERSION)
+        transition.Insert(levelTransitionDuration * 0.5f,
+            DOTween.To(
+                () => 0f,  // Proper getter that returns a value
+                x => { },   // Empty setter
+                1f,        // Unused but required
+                0f         // Immediate
+            ).OnStart(() => {
+                ClueManager.Instance.ResetForNewLevel();
+                ClueManager.Instance.ShowCurrentClue();
+            })
+        );
+
+        // 3. Final setup
+        transition.OnComplete(() => {
+            if (IsLastLevel())
+            {
+                lastLevelHandle.enabled = true;
+                StartTimer();
+                DisableHintsForFinalLevel();
+            }
+        });
     }
 
+
+    //private IEnumerator CompleteLastLevel()
+    //{
+    //    // Zoom in when completing last level
+    //    yield return ZoomInCamera();
+
+    //    // Wait a moment before resetting
+    //    yield return new WaitForSeconds(1f);
+
+    //    ReturnToFirstLevel();
+    //}
+    private void CompleteLastLevel()
+    {
+        // Similar structure but for last level completion
+        Sequence lastLevelSequence = DOTween.Sequence();
+
+        // Add any animations/waits needed for last level
+        lastLevelSequence.AppendInterval(1f); // Example delay
+
+        lastLevelSequence.OnComplete(() =>
+        {
+            // Your last level completion logic
+        });
+    }
     private IEnumerator ZoomInCamera()
     {
         mainCamera.DOOrthoSize(zoomedInSize, zoomInDuration)
