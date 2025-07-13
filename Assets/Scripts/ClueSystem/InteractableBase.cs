@@ -92,6 +92,7 @@ public class InteractableBase : MonoBehaviour
         {
             GameObject mountainObj = GameObject.FindGameObjectWithTag("Mountain");
             mountainObj.transform.GetChild(1).gameObject.SetActive(true);
+            mountainObj.GetComponent<HandleOlive>().PlayLvl2EndSeq();
         }
         if (sr != null)
         {

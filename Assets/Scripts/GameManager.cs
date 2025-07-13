@@ -6,6 +6,7 @@ using DG.Tweening;
 using ArabicSupport;
 using UnityEngine.LowLevelPhysics;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     [Header("Last Level Settings")]
     public float lastLevelDuration = 60f;
     public float zoomInDuration = 2f;
-    public float zoomedInSize = 3f; 
+    public float zoomedInSize = 3f;
     public Transform clockBranch;
     public float tickInterval = 1f;
     private float lastTickTime;
@@ -184,14 +185,16 @@ public class GameManager : MonoBehaviour
                 x => { },   // Empty setter
                 1f,        // Unused but required
                 0f         // Immediate
-            ).OnStart(() => {
+            ).OnStart(() =>
+            {
                 ClueManager.Instance.ResetForNewLevel();
                 ClueManager.Instance.ShowCurrentClue();
             })
         );
 
         // 3. Final setup
-        transition.OnComplete(() => {
+        transition.OnComplete(() =>
+        {
             if (IsLastLevel())
             {
                 lastLevelHandle.enabled = true;
@@ -372,9 +375,37 @@ public class GameManager : MonoBehaviour
         endLvl1Seq.Join(mainCharacter.GetChild(0).DOLocalMoveY(0.85f, 1).SetLoops(-1, LoopType.Yoyo));
         endLvl1Seq.Join(mainCharacter.GetChild(1).DOLocalMoveY(-0.05f, 0.8f).SetLoops(-1, LoopType.Yoyo))
         .OnComplete(() =>
-        { 
+        {
             //NEED TO DESTROY CHARACTER AND REFERENCE THE NEW ONE
         });
+    }
+
+
+    public void Clue2Lvl2Seq()
+    {
+        //Transform here supposed to be the moon transform
+          // Get references
+        Light2D light2D = transform.GetChild(0).GetComponent<Light2D>();
+        SpriteRenderer spriteRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        // Create a DOTween sequence
+        Sequence sequence = DOTween.Sequence();
+
+        // Step 1: Tween alpha of SpriteRenderer to 50 (out of 255)
+        sequence.Append(DOTween.To(
+            () => spriteRenderer.color,
+            color => spriteRenderer.color = new Color(color.r, color.g, color.b, 50f / 255f),
+            new Color(0, 0, 0, 50f / 255f),
+            2f // duration
+        ));
+
+        // Step 2: Tween light intensity to 3
+        sequence.Append(DOTween.To(
+            () => light2D.intensity,
+            x => light2D.intensity = x,
+            3f,
+            1f // duration
+        ));
     }
 
     #endregion
