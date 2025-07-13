@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         AnimateIdleCharacter();
+
         //InitializeLevel();
     }
 
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
         if (currentLevelIndex == 0)
         {
             AudioManager.Instance.PlayMusic(SoundType.BG);
+            AudioManager.Instance.musicSource.volume = 0.1f;
             AudioManager.Instance.PlaySound(SoundType.cageFalling);
             firstCage.transform.DOMove(new Vector3(firstCage.transform.localPosition.x, firstCage.transform.localPosition.y - 7f, 0), 1f);
         }
@@ -209,6 +211,7 @@ public class GameManager : MonoBehaviour
             if (IsLastLevel())
             {
                 AudioManager.Instance.PlayMusic(SoundType.LastLevelBG);
+                AudioManager.Instance.musicSource.volume = 1;
                 lastLevelHandle.enabled = true;
                 StartTimer();
                 DisableHintsForFinalLevel();

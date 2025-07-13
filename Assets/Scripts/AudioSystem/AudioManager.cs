@@ -8,8 +8,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource loopsoundEffectSource;
     public AudioSource musicSource;
 
-    float musicVolume = 1f;
-    float soundEffectVolume = 1f;
+    float musicVolume = 0.1f;
+    float soundEffectVolume = 0.5f;
 
     public float MusicVolume => musicVolume;
     public float SoundEffectVolume => soundEffectVolume;

@@ -46,12 +46,12 @@ public class LastLevelHandle : MonoBehaviour
                     .SetEase(Ease.OutQuad)
             );
 
-            branchSequence.Append(branch.DOLocalRotate(new Vector3(0, 0, 65), 2f)
+            branchSequence.Append(branch.DOLocalRotate(new Vector3(0, 0, 55), 2f)
                     .SetEase(Ease.OutQuad)
             );
-            branchSequence.Join(branch.DOLocalMoveY(-2, 1));
+            branchSequence.Join(branch.DOLocalMoveY(-1.5f, 1));
 
-            branchSequence.Append(playerTransform.DOLocalMoveX(playerTransform.localPosition.x + 3,2));
+            branchSequence.Append(playerTransform.DOLocalMoveX(-3,2));
 
 
         }
