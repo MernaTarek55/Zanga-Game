@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     [Header("First Level Settings")]
     [SerializeField] GameObject firstCage;
     [SerializeField] Transform fourthRope;
+    [Header("Second Level Settings")]
+    [SerializeField] PatternManager patternManager;
     [Header("Last Level Settings")]
     public float lastLevelDuration = 60f;
     public float zoomInDuration = 2f;
@@ -143,6 +145,7 @@ public class GameManager : MonoBehaviour
         {
             if (IsLastLevel())
             {
+                
                 CompleteLastLevel();
             }
             else
@@ -253,7 +256,7 @@ public class GameManager : MonoBehaviour
         if (ClueManager.Instance.AreAllCluesSolved)
         {
             // If clues are solved but timer finished, just stop timer
-
+            ShowWinPanel();
             return;
         }
 
@@ -263,43 +266,45 @@ public class GameManager : MonoBehaviour
 
     private void OnTimeExpiredReset()
     {
+        // 1. Disable cage animator and drop the cage
         Cage.GetComponent<Animator>().enabled = false;
-        Cage.transform.DOMove(new Vector3(Cage.transform.localPosition.x, Cage.transform.localPosition.y - 3.5f, 0), 1f);
-        //StartCoroutine(CompleteLastLevel());
-        //// Zoom in before resetting
-        //yield return ZoomInCamera();
+        Cage.transform.DOMove(
+            new Vector3(
+                Cage.transform.localPosition.x,
+                Cage.transform.localPosition.y - 3.5f,
+                0
+            ),
+            1f
+        );
 
-        //// Wait a moment before resetting
-        //yield return new WaitForSeconds(0.5f);
-
-        //ReturnToFirstLevel();
+        DOVirtual.DelayedCall(
+            2f,
+            () => ReturnToFirstLevel(),
+            false  
+        );
     }
-
-
 
     private void ReturnToFirstLevel()
     {
-        StartCoroutine(ResetToFirstLevel());
-    }
+        Sequence resetSeq = DOTween.Sequence();
 
-    private IEnumerator ResetToFirstLevel()
-    {
-        // Reset camera zoom if we zoomed in
-        ResetCameraZoom();
+        //ObjectStateManager.Instance.SaveAllStates();
 
-        // Move environment back to first level
-        environmentParent.DOMove(levelPositions[0], levelTransitionDuration);
 
-        yield return new WaitForSeconds(levelTransitionDuration);
+        resetSeq.Append(environmentParent.DOMove(levelPositions[0], levelTransitionDuration));
 
-        // Reset game state
-        currentLevelIndex = 0;
-        ClueManager.Instance.ResetAllClues();
-        HintManager.Instance.SetEnabled(true);
-        HintManager.Instance.ResetIdleTimer();
+        resetSeq.OnComplete(() => {
+            currentLevelIndex = 0;
 
-        // Reinitialize first level
-        InitializeLevel();
+            ObjectStateManager.Instance.ResetAllObjects();
+
+            ClueManager.Instance.ResetAllClues();
+
+            HintManager.Instance.SetEnabled(true);
+            HintManager.Instance.ResetIdleTimer();
+
+            InitializeLevel();
+        });
     }
 
     public void OnPlayerFell()

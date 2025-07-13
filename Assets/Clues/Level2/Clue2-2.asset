@@ -15,5 +15,5 @@ MonoBehaviour:
   clueID: 22
   clueImage: {fileID: 21300000, guid: 87b88d7dff1b9994d8bee605d8616b54, type: 3}
   validObjectIDs: 16000000
-  clueSteps: 3
+  clueSteps: 0
   clueMaxSteps: 1

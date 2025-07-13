@@ -9,7 +9,7 @@ public class ClueInteractable : InteractableBase
     private Quaternion originalRotation;
     public static event Action<ClueInteractable> OnUnblocked;
 
-    private bool _isBlocked;
+    public bool _isBlocked;
     public bool IsBlocked
     {
         get => _isBlocked;

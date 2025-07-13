@@ -26,6 +26,9 @@ public class InteractableBase : MonoBehaviour
     public System.Action<InteractableBase> OnSnapped;
     public bool hasBeenSolved = false;
     [SerializeField] protected GameObject tree;
+    
+
+
     private void OnMouseDown()
     {
         HintManager.Instance.ResetIdleTimer();
@@ -48,7 +51,7 @@ public class InteractableBase : MonoBehaviour
 
         transform.position = GetMouseWorldPos() + offset;
     }
-
+    
     private void OnMouseUp()
     {
         isDragging = false;

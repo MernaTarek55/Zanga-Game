@@ -920,6 +920,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 1823807867}
   hasBeenSolved: 0
   tree: {fileID: 1935832449}
+  _isBlocked: 0
   rock: {fileID: 0}
 --- !u!58 &169021621
 CircleCollider2D:
@@ -984,6 +985,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &169021624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169021617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b3127291d4a5e4f876cef9265cbfc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &173254078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185361672}
   - component: {fileID: 185361671}
+  - component: {fileID: 185361673}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1121,7 +1135,8 @@ MonoBehaviour:
   poemImageUI: {fileID: 1503094411}
   firstCage: {fileID: 1048098548}
   fourthRope: {fileID: 807737319}
-  lastLevelDuration: 40
+  patternManager: {fileID: 1350205295}
+  lastLevelDuration: 2
   zoomInDuration: 2
   zoomedInSize: 3
   clockBranch: {fileID: 1748003991}
@@ -1146,6 +1161,151 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1000470092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185361673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185361670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309535175156f524693c79145d381637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectStates:
+  - obj: {fileID: 916547826}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 205870337}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 1
+  - obj: {fileID: 227688878}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 807737318}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1813881878}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1048098548}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 442185939}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 626797210}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1068928158}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1167191882}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1854194064}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 2011278480}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 169021617}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1935832449}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1240578878}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 820738279}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1748003990}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1748003990}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1503124279}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 1712814402}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 715533050}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 396984065}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
 --- !u!1 &190897285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1448,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 0}
   hasBeenSolved: 0
   tree: {fileID: 0}
+  _isBlocked: 0
   rock: {fileID: 227688878}
 --- !u!61 &205870341
 BoxCollider2D:
@@ -1436,6 +1597,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 1407238697}
   hasBeenSolved: 0
   tree: {fileID: 1813881878}
+  _isBlocked: 0
   rock: {fileID: 0}
 --- !u!212 &227688882
 SpriteRenderer:
@@ -5046,6 +5208,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 614411946}
   hasBeenSolved: 0
   tree: {fileID: 0}
+  _isBlocked: 0
   rock: {fileID: 0}
 --- !u!61 &820738283
 BoxCollider2D:
@@ -5501,8 +5664,8 @@ GameObject:
   m_Component:
   - component: {fileID: 916547827}
   - component: {fileID: 916547828}
-  - component: {fileID: 916547830}
   - component: {fileID: 916547829}
+  - component: {fileID: 916547830}
   m_Layer: 0
   m_Name: Leaf - Blanket
   m_TagString: Untagged
@@ -5600,8 +5763,8 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 0}
   hasBeenSolved: 0
   tree: {fileID: 0}
---- !u!61 &916547830
-BoxCollider2D:
+--- !u!70 &916547830
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5634,18 +5797,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.07703549, y: 0.07703447}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
-    newSize: {x: 10, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 2.5738668, y: 2.573866}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.18, y: 0.15}
+  m_Size: {x: 1.57, y: 2.22}
+  m_Direction: 1
 --- !u!1 &938851723
 GameObject:
   m_ObjectHideFlags: 0
@@ -8403,10 +8557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82f6fc5cab02bf429b64356a0311fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternIndex: 0
   clue: {fileID: 11400000, guid: 50c7311b94623b4468a1cfb2f6104cae, type: 2}
   patternSteps: 00000000010000000200000000000000
-  PetalsLight:
+  petalsLight:
   - {fileID: 1000100840}
   - {fileID: 1044846408}
   - {fileID: 2102299357}
@@ -10371,7 +10524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf48d82cb05e1dc4fa6f263ebe9f4aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleThreshold: 3
+  idleThreshold: 30
   hintCooldown: 2
   idleTimer: 0
   hintTriggered: 0
@@ -10431,6 +10584,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 517571166}
   hasBeenSolved: 0
   tree: {fileID: 0}
+  _isBlocked: 0
   rock: {fileID: 0}
 --- !u!61 &1813881880
 BoxCollider2D:
@@ -10949,6 +11103,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 969658004}
   hasBeenSolved: 0
   tree: {fileID: 2011278480}
+  _isBlocked: 0
   rock: {fileID: 0}
 --- !u!50 &1854194069
 Rigidbody2D:
@@ -11791,6 +11946,7 @@ MonoBehaviour:
   targetSnapPosition: {fileID: 261558045}
   hasBeenSolved: 0
   tree: {fileID: 0}
+  _isBlocked: 0
   rock: {fileID: 0}
 --- !u!61 &2011278484
 BoxCollider2D:
@@ -12127,6 +12283,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2986534545871226719, guid: b3db428270722f24e90399be1fa29645, type: 3}
       insertIndex: -1
       addedObject: {fileID: 169021622}
+    - targetCorrespondingSourceObject: {fileID: 2986534545871226719, guid: b3db428270722f24e90399be1fa29645, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 169021624}
   m_SourcePrefab: {fileID: 100100000, guid: b3db428270722f24e90399be1fa29645, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

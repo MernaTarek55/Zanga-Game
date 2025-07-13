@@ -1,64 +1,85 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class PatternManager : MonoBehaviour
 {
-    public static PatternManager Instance;
-    public int patternIndex = 0;
-    [SerializeField]ClueData clue;
-    [SerializeField] int[] patternSteps;
-    [SerializeField] GameObject[] PetalsLight;
-    [SerializeField] GameObject moon;
+    public static PatternManager Instance { get; private set; }
+
+    [Header("Configuration")]
+    [SerializeField] private ClueData clue;
+    [SerializeField] private int[] patternSteps;
+    [SerializeField] private GameObject[] petalsLight;
+    [SerializeField] private GameObject moon;
+
+    private int patternIndex = 0;
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
         Instance = this;
     }
 
-    private void Start()
-    {
-        clue.clueSteps = 0; // Initialize clue steps
-    }
-
-
     public int OnPetalPressed(int petalIndex)
     {
-        // if not correct: reset everything
         if (petalIndex != patternSteps[patternIndex])
         {
-            Debug.Log($"❌ Incorrect petal pressed: {petalIndex}, expected: {patternIndex}");
-            patternIndex = 0; // Reset pattern index
-            clue.clueSteps = 0; // Reset clue steps
-            foreach(var petalLight in PetalsLight)
-            {
-                Light2D light = petalLight.GetComponent<Light2D>();
-                if (light != null)
-                {
-                    light.intensity = 0f;
-                }
-            }
+            HandleIncorrectPattern();
             return 0;
         }
-        else
+
+        patternIndex++;
+        clue.clueSteps++;
+
+        Debug.Log($"✅ Correct petal: {petalIndex}, step: {clue.clueSteps}/{clue.clueMaxSteps}");
+
+        if (clue.clueSteps == clue.clueMaxSteps)
         {
-            patternIndex++;
-            clue.clueSteps++;
-            Debug.LogWarning($"✅ Correct petal pressed: {petalIndex}, current step: {clue.clueSteps}/{clue.clueMaxSteps}");
-            if (clue.clueSteps == clue.clueMaxSteps)
+            HandlePatternComplete();
+        }
+
+        return 1;
+    }
+
+    private void HandleIncorrectPattern()
+    {
+        Debug.Log($"❌ Incorrect petal. Expected: {patternSteps[patternIndex]}");
+        patternIndex = 0;
+        clue.clueSteps = 0;
+        SetAllPetalsIntensity(0f);
+    }
+
+    private void HandlePatternComplete()
+    {
+        Debug.Log("🎉 Pattern completed!");
+        patternIndex = 0;
+        moon.SetActive(true);
+        SetAllPetalsIntensity(1f);
+        ClueManager.Instance.OnClueSolved(clue.clueID);
+    }
+
+    public static void SetAllPetalsIntensity(float intensity)
+    {
+        if (Instance == null || Instance.petalsLight == null)
+        {
+            Debug.LogError("PatternManager not initialized or petalsLight not set!");
+            return;
+        }
+
+        foreach (var petal in Instance.petalsLight)
+        {
+            if (petal == null) continue;
+
+            var light = petal.GetComponent<Light2D>();
+            if (light != null)
             {
-                Debug.Log($"✅ Pattern completed successfully!");
-                moon.SetActive(true);
-                foreach (var petalLight in PetalsLight)
-                {
-                    Light2D light = petalLight.GetComponent<Light2D>();
-                    if (light != null)
-                    {
-                        light.intensity = 1f;
-                    }
-                }
-                ClueManager.Instance.OnClueSolved(clue.clueID);
+                light.intensity = intensity;
             }
-            return 1;
         }
     }
 }
