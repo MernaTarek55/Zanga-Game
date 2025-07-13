@@ -17,19 +17,17 @@ public class HandleOlive : MonoBehaviour
             Sequence oliveSequence = DOTween.Sequence();
 
 
-            oliveSequence.Append(oliveTransform.DOLocalMove(new Vector3(oliveTransform.localPosition.x, oliveTransform.localPosition.y-3, 0), 1f));
+            oliveSequence.Append(oliveTransform.DOLocalMoveY(oliveTransform.localPosition.y-2, 2));
 
-            oliveSequence.Append(playerTransform.DOMove(new Vector3(playerTransform.position.x+10, playerTransform.position.y, 0f), 1.5f));
+            
 
-            oliveSequence.Append(oliveTransform.DOLocalMove(new Vector3(oliveTransform.localPosition.x-0.2f, oliveTransform.localPosition.y-1.5f, 0f), 1f)
-                .SetEase(Ease.OutBack));
+            oliveSequence.Append(playerTransform.DOMoveX(playerTransform.position.x + (oliveTransform.position.x - playerTransform.position.x)-1, 3f));
 
-            oliveSequence.OnComplete(() => {
-                if (CharacterHead != null)
-                {
-                    CharacterHead.transform.rotation = Quaternion.Euler(0f, 0f, CharacterHead.transform.rotation.z+16f);
-                }
-            });
+           
+
+            oliveSequence.Append(CharacterHead.transform.DORotate(new Vector3(0, 0, 16f), 0.5f, RotateMode.Fast));
+
+           
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - hole
   - hourHand
   - Rock
+  - Mountain
   layers:
   - Default
   - TransparentFX
