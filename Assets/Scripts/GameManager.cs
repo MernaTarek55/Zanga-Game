@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] LastLevelHandle lastLevelHandle;
     private void Awake()
     {
-        AdjustCamera();
+        //AdjustCamera();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
