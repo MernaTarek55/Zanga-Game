@@ -1,0 +1,858 @@
+fileFormatVersion: 2
+guid: e26d451a3096d7d48a1ef92bc62f072a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1382616361853973706
+    second: Clues Type-15_0
+  - first:
+      213: 3840326616690150323
+    second: Clues Type-15_1
+  - first:
+      213: 1719141852370963649
+    second: Clues Type-15_2
+  - first:
+      213: -7676932186686043494
+    second: Clues Type-15_3
+  - first:
+      213: 5525792897028521548
+    second: Clues Type-15_4
+  - first:
+      213: 6706689190307379321
+    second: Clues Type-15_5
+  - first:
+      213: 540780908462053470
+    second: Clues Type-15_6
+  - first:
+      213: -2687435377453021714
+    second: Clues Type-15_7
+  - first:
+      213: 6249541757379917539
+    second: Clues Type-15_8
+  - first:
+      213: 127748259463899934
+    second: Clues Type-15_9
+  - first:
+      213: 4980311166735937092
+    second: Clues Type-15_10
+  - first:
+      213: -4652887650498065151
+    second: Clues Type-15_11
+  - first:
+      213: 4285892957854581191
+    second: Clues Type-15_12
+  - first:
+      213: 5588842605909275248
+    second: Clues Type-15_13
+  - first:
+      213: -466854481841583198
+    second: Clues Type-15_14
+  - first:
+      213: -5191858727997036894
+    second: Clues Type-15_15
+  - first:
+      213: -6332397096411141399
+    second: Clues Type-15_16
+  - first:
+      213: 3325788921693010015
+    second: Clues Type-15_17
+  - first:
+      213: -4859882458124635217
+    second: Clues Type-15_18
+  - first:
+      213: -9145464566640268568
+    second: Clues Type-15_19
+  - first:
+      213: 303797070348972460
+    second: Clues Type-15_20
+  - first:
+      213: -4740384733990946138
+    second: Clues Type-15_21
+  - first:
+      213: -1645093941235308689
+    second: Clues Type-15_22
+  - first:
+      213: 410071310753523320
+    second: Clues Type-15_23
+  - first:
+      213: -1229022405516174666
+    second: Clues Type-15_24
+  - first:
+      213: -5821731567187886953
+    second: Clues Type-15_25
+  - first:
+      213: 4994931564927473731
+    second: Clues Type-15_26
+  - first:
+      213: 8188934480354215906
+    second: Clues Type-15_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Clues Type-15_0
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 286
+        width: 57
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b0d0b8eb5ffcce0800000000000000
+      internalID: -1382616361853973706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_1
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 325
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bb4b4106b49b4530800000000000000
+      internalID: 3840326616690150323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_2
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 297
+        width: 78
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cc0415086e9bd710800000000000000
+      internalID: 1719141852370963649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_3
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 330
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ac0dfa9de067590800000000000000
+      internalID: -7676932186686043494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_4
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 329
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ef2c9ec5f8fac40800000000000000
+      internalID: 5525792897028521548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_5
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 297
+        width: 61
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9783937f842f21d50800000000000000
+      internalID: 6706689190307379321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_6
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 332
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e58913efe5d318700800000000000000
+      internalID: 540780908462053470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_7
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 323
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5481a43cf44bad0800000000000000
+      internalID: -2687435377453021714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_8
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 323
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e6b999ed15dab650800000000000000
+      internalID: 6249541757379917539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_9
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 290
+        width: 87
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b250a7d5ad5c100800000000000000
+      internalID: 127748259463899934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_10
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 297
+        width: 72
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44ee43c8e9e9d1540800000000000000
+      internalID: 4980311166735937092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_11
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 281
+        width: 78
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dc24c755f9d6fb0800000000000000
+      internalID: -4652887650498065151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_12
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 331
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c1454200fc8a7b30800000000000000
+      internalID: 4285892957854581191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_13
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 286
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0727ac63dbe8f8d40800000000000000
+      internalID: 5588842605909275248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_14
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 286
+        width: 28
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab880082566589f0800000000000000
+      internalID: -466854481841583198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_15
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 297
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a6a9b99effc2f7b0800000000000000
+      internalID: -5191858727997036894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_16
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 289
+        width: 98
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eae2bb246ece18a0800000000000000
+      internalID: -6332397096411141399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_17
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 282
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f58f07b4763972e20800000000000000
+      internalID: 3325788921693010015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_18
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 308
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa3345137aa3e8cb0800000000000000
+      internalID: -4859882458124635217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_19
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 286
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ea2c7f6e68c41180800000000000000
+      internalID: -9145464566640268568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_20
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 286
+        width: 28
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca174fd63dd473400800000000000000
+      internalID: 303797070348972460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_21
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 286
+        width: 13
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aaf8c73335c63eb0800000000000000
+      internalID: -4740384733990946138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_22
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 286
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67a58ac6c37b29e0800000000000000
+      internalID: -1645093941235308689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_23
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 288
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876ea0a3fadd0b500800000000000000
+      internalID: 410071310753523320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_24
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 288
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba563242a2a1fee0800000000000000
+      internalID: -1229022405516174666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_25
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 287
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c76180cfd053fa0800000000000000
+      internalID: -5821731567187886953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_26
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 288
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34853e44bcf815540800000000000000
+      internalID: 4994931564927473731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clues Type-15_27
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 288
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e70676e580f4a170800000000000000
+      internalID: 8188934480354215906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Clues Type-15_0: -1382616361853973706
+      Clues Type-15_1: 3840326616690150323
+      Clues Type-15_10: 4980311166735937092
+      Clues Type-15_11: -4652887650498065151
+      Clues Type-15_12: 4285892957854581191
+      Clues Type-15_13: 5588842605909275248
+      Clues Type-15_14: -466854481841583198
+      Clues Type-15_15: -5191858727997036894
+      Clues Type-15_16: -6332397096411141399
+      Clues Type-15_17: 3325788921693010015
+      Clues Type-15_18: -4859882458124635217
+      Clues Type-15_19: -9145464566640268568
+      Clues Type-15_2: 1719141852370963649
+      Clues Type-15_20: 303797070348972460
+      Clues Type-15_21: -4740384733990946138
+      Clues Type-15_22: -1645093941235308689
+      Clues Type-15_23: 410071310753523320
+      Clues Type-15_24: -1229022405516174666
+      Clues Type-15_25: -5821731567187886953
+      Clues Type-15_26: 4994931564927473731
+      Clues Type-15_27: 8188934480354215906
+      Clues Type-15_3: -7676932186686043494
+      Clues Type-15_4: 5525792897028521548
+      Clues Type-15_5: 6706689190307379321
+      Clues Type-15_6: 540780908462053470
+      Clues Type-15_7: -2687435377453021714
+      Clues Type-15_8: 6249541757379917539
+      Clues Type-15_9: 127748259463899934
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -16,7 +16,7 @@ public class ClueManager : MonoBehaviour
     }
     private void Start()
     {
-        ShowCurrentClue();
+        //ShowCurrentClue();
     }
 
     public void RegisterClueObject(ClueInteractable clue)
