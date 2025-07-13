@@ -282,7 +282,7 @@ public class GameManager : MonoBehaviour
         
 
         DOVirtual.DelayedCall(
-            2f,
+            0.5f,
             () => ReturnToFirstLevel(),
             false  
         );
