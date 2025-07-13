@@ -55,8 +55,11 @@ public class ObjectStateManager : MonoBehaviour
                 }
 
             }
-            var interactable = state.obj.GetComponent<ClueInteractable>();
-            if (interactable != null) interactable.IsBlocked = state.isblocked;
+            if (state.obj.GetComponent<ClueInteractable>() != null)
+            {
+                var interactable = state.obj.GetComponent<ClueInteractable>();
+                interactable.IsBlocked = state.isblocked;
+            }
         }
     }
 }

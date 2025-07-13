@@ -287,24 +287,24 @@ public class GameManager : MonoBehaviour
     private void ReturnToFirstLevel()
     {
         Sequence resetSeq = DOTween.Sequence();
-
-        //ObjectStateManager.Instance.SaveAllStates();
-
+        
 
         resetSeq.Append(environmentParent.DOMove(levelPositions[0], levelTransitionDuration));
+        
+        resetSeq.InsertCallback(levelTransitionDuration * 0.5f, () => {
+            ObjectStateManager.Instance.ResetAllObjects();
+            currentLevelIndex = 0;
+            ClueManager.Instance.ResetAllClues();
+        });
 
         resetSeq.OnComplete(() => {
-            currentLevelIndex = 0;
-
-            ObjectStateManager.Instance.ResetAllObjects();
-
-            ClueManager.Instance.ResetAllClues();
-
             HintManager.Instance.SetEnabled(true);
             HintManager.Instance.ResetIdleTimer();
-
             InitializeLevel();
         });
+
+
+
     }
 
     public void OnPlayerFell()

@@ -1306,6 +1306,18 @@ MonoBehaviour:
     initialRotation: {x: 0, y: 0, z: 0, w: 0}
     initialActiveState: 0
     isblocked: 0
+  - obj: {fileID: 1729683932}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
+  - obj: {fileID: 396984065}
+    initialPosition: {x: 0, y: 0, z: 0}
+    initialScale: {x: 0, y: 0, z: 0}
+    initialRotation: {x: 0, y: 0, z: 0, w: 0}
+    initialActiveState: 0
+    isblocked: 0
 --- !u!1 &190897285
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,7 +7687,7 @@ GameObject:
   - component: {fileID: 1211220708}
   m_Layer: 0
   m_Name: HoleArea
-  m_TagString: Untagged
+  m_TagString: Mountain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7694,6 +7706,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 261558045}
+  - {fileID: 1729683933}
   m_Father: {fileID: 1224320231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1211220708
@@ -7854,7 +7867,6 @@ Transform:
   - {fileID: 1211220707}
   - {fileID: 675836748}
   - {fileID: 715533051}
-  - {fileID: 1729683933}
   - {fileID: 1935832450}
   m_Father: {fileID: 1624930559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10158,7 +10170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1729683933
 Transform:
   m_ObjectHideFlags: 0
@@ -10167,12 +10179,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729683932}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.09, y: -1.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.11, y: -0.527, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1224320231}
+  m_Father: {fileID: 1211220707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1729683934
 SpriteRenderer:
