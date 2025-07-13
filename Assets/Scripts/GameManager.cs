@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int currentLevelIndex = 0;
     public float levelTransitionDuration = 2f;
     public float defaultZoomSize = 5f;
+    public bool isCharacterIdle;
 
     [Header("Environment Movement")]
     public Transform environmentParent;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     [Header("First Level Settings")]
     [SerializeField] GameObject firstCage;
+    [SerializeField] Transform fourthRope;
     [Header("Last Level Settings")]
     public float lastLevelDuration = 60f;
     public float zoomInDuration = 2f;
@@ -44,6 +46,11 @@ public class GameManager : MonoBehaviour
     [Header("Win Panel")]
     [SerializeField] GameObject winpanel;
     [SerializeField] Image winpanelImage;
+
+    [Header("Character reference")]
+    [SerializeField] Transform mainCharacter; //NEEDS TO BE UPDATED IN EACH LEVEL
+
+
     private void Awake()
     {
         //AdjustCamera();
@@ -59,10 +66,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        AnimateIdleCharacter();
         //InitializeLevel();
     }
 
-    
+
     void Update()
     {
         if (isTimerActive)
@@ -104,9 +112,9 @@ public class GameManager : MonoBehaviour
         }
         if (currentLevelIndex == 0)
         {
-            firstCage.transform.DOMove(new Vector3(firstCage.transform.localPosition.x, firstCage.transform.localPosition.y -7f, 0), 1f);
+            firstCage.transform.DOMove(new Vector3(firstCage.transform.localPosition.x, firstCage.transform.localPosition.y - 7f, 0), 1f);
         }
-            if (currentLevelIndex < levelPositions.Count)
+        if (currentLevelIndex < levelPositions.Count)
         {
             environmentParent.position = levelPositions[currentLevelIndex];
         }
@@ -236,7 +244,7 @@ public class GameManager : MonoBehaviour
     public void StopTimer()
     {
         isTimerActive = false;
-        
+
     }
 
     private void OnTimerFinished()
@@ -256,7 +264,7 @@ public class GameManager : MonoBehaviour
     private void OnTimeExpiredReset()
     {
         Cage.GetComponent<Animator>().enabled = false;
-        Cage.transform.DOMove(new Vector3(Cage.transform.localPosition.x, Cage.transform.localPosition.y -3.5f, 0), 1f);
+        Cage.transform.DOMove(new Vector3(Cage.transform.localPosition.x, Cage.transform.localPosition.y - 3.5f, 0), 1f);
         //StartCoroutine(CompleteLastLevel());
         //// Zoom in before resetting
         //yield return ZoomInCamera();
@@ -267,7 +275,7 @@ public class GameManager : MonoBehaviour
         //ReturnToFirstLevel();
     }
 
-    
+
 
     private void ReturnToFirstLevel()
     {
@@ -314,7 +322,7 @@ public class GameManager : MonoBehaviour
         poemImageUI.color = startColor;
 
         Sequence verseSequence = DOTween.Sequence();
-        verseSequence.Append(poemImageUI.DOFade(1f,1f).SetEase(Ease.InQuad)); // Fade In
+        verseSequence.Append(poemImageUI.DOFade(1f, 1f).SetEase(Ease.InQuad)); // Fade In
     }
 
     public LevelData GetCurrentLevel()
@@ -333,6 +341,38 @@ public class GameManager : MonoBehaviour
         int pixelsPerUnit = 100; // Match your sprite PPU
         Camera.main.orthographicSize = Screen.height / (2f * pixelsPerUnit);
     }
+
+
+    public void AnimateIdleCharacter()
+    {
+        mainCharacter.GetChild(0).DOLocalMoveY(0.85f, 1).SetLoops(-1, LoopType.Yoyo);
+        mainCharacter.GetChild(1).DOLocalMoveY(-0.05f, 0.8f).SetLoops(-1, LoopType.Yoyo);
+    }
+
+
+
+    //Sequences to be called at certain events during each level
+
+    #region Tween Sequnces
+    public void Clue2Lvl1Seq()
+    {
+        fourthRope.DOLocalMoveY(0, 2);
+    }
+
+    public void Clue3Lvl1Seq()
+    {
+        Sequence endLvl1Seq = DOTween.Sequence();
+        endLvl1Seq.Append(Cage.transform.DOLocalMoveY(Cage.transform.position.y + 7, 3));
+        endLvl1Seq.Append(mainCharacter.DOLocalMoveX(mainCharacter.position.x + 20, 5));
+        endLvl1Seq.Join(mainCharacter.GetChild(0).DOLocalMoveY(0.85f, 1).SetLoops(-1, LoopType.Yoyo));
+        endLvl1Seq.Join(mainCharacter.GetChild(1).DOLocalMoveY(-0.05f, 0.8f).SetLoops(-1, LoopType.Yoyo))
+        .OnComplete(() =>
+        { 
+            //NEED TO DESTROY CHARACTER AND REFERENCE THE NEW ONE
+        });
+    }
+
+    #endregion
 }
 
 [System.Serializable]
